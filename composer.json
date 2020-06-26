@@ -1,0 +1,22 @@
+{
+    "name": "unifreak/note",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "fanghao",
+            "email": "fanghao90s@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/var-dumper": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Algs\\": "./"
+        },
+        "files": [
+            "utils.php"
+        ]
+    }
+}
