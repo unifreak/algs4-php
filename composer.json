@@ -9,11 +9,11 @@
         }
     ],
     "require": {
-        "symfony/var-dumper": "^5.1"
+        "sgh/comparable": "^1.1"
     },
     "autoload": {
         "psr-4": {
-            "Algs\\": "./"
+            "Algs\\": "src/"
         },
         "files": [
             "utils.php"
