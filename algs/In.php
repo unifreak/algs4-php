@@ -21,11 +21,6 @@ final class In
         }
     }
 
-    public function __destruct()
-    {
-        fclose($this->fp);
-    }
-
     public static function readInts($filename)
     {
         return (new In($filename))->readAllInts();

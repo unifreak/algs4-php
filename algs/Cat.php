@@ -7,7 +7,7 @@ namespace Algs;
 
 class Cat
 {
-    public static main($args)
+    public static function main($args)
     {
         $out = new Out($args[count($args)-1]);
         for ($i = 0; $i < count($args)-1; $i++) {
@@ -17,5 +17,6 @@ class Cat
             $in->close();
         }
         $out->close();
+
     }
 }

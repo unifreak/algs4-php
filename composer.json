@@ -13,10 +13,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Algs\\": "src/"
+            "Algs\\": ["algs/"]
         },
         "files": [
-            "utils.php"
+            "./algs/util.php"
         ]
     }
 }

@@ -6,9 +6,9 @@ namespace Algs;
  * p.51, t.1.2.9
  */
 
-final class Out
+class Out
 {
-    public function __construct($filename)
+    public function __construct($name)
     {
         try {
             if (false === ($fp = fopen($name, 'w+b'))) {
@@ -18,11 +18,6 @@ final class Out
         } catch (\Exception $e) {
             throw new InvalidArgumentException("Could not open file $name to write");
         }
-    }
-
-    public function __destruct()
-    {
-        fclose($this->fp);
     }
 
     public function println($x)
