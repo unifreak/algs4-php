@@ -2,6 +2,19 @@
 Indexed array only
 尽量与原书变量名一致
 Comparable -> sgh/comparable
+Only Algs namespace
+@todo When neccessary, use SplFixedArray (FixedCapacityStackOfStrings)
+Arr
+__constructStatic()
+
+# PHP Sucks
+- 泛型 (Stack<String>, Stack<Double>)
+- 面向对象 (String.charAt())
+- 多字节支持 ([] 对中文无用)
+- `$$$$$$`, `$this`
+
+# Code Style
+尽量与原书一直: 缩进, 省略, 变量名
 
 # 搭建, 运行
 

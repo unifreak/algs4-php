@@ -10,111 +10,62 @@ namespace Algs;
 
 final class StdIn
 {
-    private static $lines = []; // [line, ...]
-    private static $tokens = []; // [line=>[token, token], ...]
-    private static $chars = []; // [line=>[token=>[char, ...]...]...]
-    private static $totalChar = 0;
-
-    private static $linePos = 0;
-    private static $tokenPos = 0;
-    private static $charPos = 0;
+    private static $resetPos = null;
 
     private function __construct() { }
-
-    public static function __constructStatic()
-    {
-        if (false ===
-            self::$lines = file('php://stdin', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES)
-        ) {
-            throw new \RuntimeException('Can not open stdin for read');
-        }
-
-        self::parseChar();
-        // dump("pased lines:");
-        // dump(self::$lines);
-        // dump("pased chars:");
-        // dump(self::$chars);
-    }
-
-    private static function parseChar()
-    {
-        foreach (self::$lines as $line) {
-            $chars = preg_split('/(?<!^)(?!$)/uS', $line);
-            self::$chars[] = $chars;
-        }
-    }
 
     /**
      * @see <https://www.php.net/manual/en/function.feof.php> first comment
      */
     public static function isEmpty()
     {
-        return self::$linePos >= count(self::$lines);
+        self::$resetPos = ftell(STDIN);
+        return feof(STDIN);
     }
 
     public static function hasNextLine()
     {
-        return isset(self::$lines[self::$linePos+1]);
+        $before = ftell(STDIN);
+        $has = fgets(STDIN) !== false;
+        fseek(STDIN, $before);
+        return $has;
     }
 
     public static function readLine()
     {
-        $line = self::nextChar();
-        while (! self::isEmpty() && self::$charPos != 0) {
-            $line .= self::nextChar();
-        }
-        return $line;
+        return fgets(STDIN);
     }
 
     public static function readChar()
     {
-        $char = self::nextChar();
-        while (($char == ' ' || $char == "\t") && ! self::isEmpty()) {
-            $char = self::nextChar();
-        }
-        return $char;
-    }
-
-    private static function nextChar()
-    {
-        // dump("reading char at " . self::$linePos .':' . self::$charPos);
-        if (self::isEmpty()) {
-            return null;
-        }
-        $char = self::$chars[self::$linePos][self::$charPos];
-        self::forward();
-        return $char;
-    }
-
-    private static function forward()
-    {
-        self::$charPos++;
-        // dump("char pos:" . self::$charPos);
-        // dump("reset?" . count(self::$chars[self::$linePos]));
-        if (self::$charPos >= count(self::$chars[self::$linePos])) {
-            self::$linePos++;
-            self::$charPos = 0;
-        }
+        return fgetc(STDIN);
     }
 
     public static function readAll()
     {
-        $remain = '';
-        while (! self::isEmpty()) {
-            $remain .= self::readLine();
+        if (false !== $r = stream_get_contents(STDIN)) {
+            self::$empty = true;
+            return $r;
         }
-        return $remain;
+        return null;
     }
 
     public static function readString()
     {
-        // dump("reading string");
-        $s = self::readChar();
-        $c = self::nextChar();
-        while (self::$charPos != 0 && $c != ' ' && $c != "\t") {
-            $c = self::nextChar();
-            $s .= $c;
+        self::rollback();
+
+        $c = fgetc(STDIN);
+        // skip pre whitespace
+        while (! feof(STDIN) && ctype_space($c)) {
+            $c = fgetc(STDIN);
         }
+
+        $s = "";
+        while (! feof(STDIN) && ! ctype_space($c) ) {
+            $s .= $c;
+            $c = fgetc(STDIN);
+        }
+
         return $s;
     }
 
@@ -128,16 +79,36 @@ final class StdIn
 
     public static function readInt()
     {
-        return (int) self::readString();
+        self::rollback();
+
+        list($r) = fscanf(STDIN, "%d");
+        if (! is_numeric($r)) {
+            throw new \UnexpectedValueException(
+                "attemps to read an 'int' value from standard input,
+                but the next token is $r"
+            );
+        }
+        return $r;
     }
 
     public static function readDouble()
     {
-        return (float) self::readString();
+        self::rollback();
+
+        list($r) = fscanf(STDIN, "%f");
+        if (! is_double($r)) {
+            throw new \UnexpectedValueException(
+                "attemps to read an 'float' value from standard input,
+                but the next token is " . self::readString()
+            );
+        }
+        return $r;
     }
 
     public static function readBoolean()
     {
+        self::rollback();
+
         $token = self::readString();
         if (strcasecmp($token, 'true') == 0)  return true;
         if (strcasecmp($token, 'false') == 0) return false;
@@ -161,16 +132,14 @@ final class StdIn
         StdOut::println("Your int was: " . $a);
         StdOut::println();
 
-        // StdOut::print("Type a boolean: ");
-        // $b = StdIn::readBoolean();
-        // StdOut::println("Your boolean was: " . $b);
-        // StdOut::println();
+        StdOut::print("Type a boolean: ");
+        $b = StdIn::readBoolean();
+        StdOut::println("Your boolean was: " . $b);
+        StdOut::println();
 
-        // StdOut::print("Type a double: ");
-        // $c = StdIn::readDouble();
-        // StdOut::println("Your double was: " . $c);
-        // StdOut::println();
+        StdOut::print("Type a double: ");
+        $c = StdIn::readDouble();
+        StdOut::println("Your double was: " . $c);
+        StdOut::println();
     }
 }
-
-StdIn::__constructStatic();

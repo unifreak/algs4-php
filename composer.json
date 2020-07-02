@@ -13,7 +13,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Algs\\": ["algs/"]
+            "Algs\\": [
+                "algs/",
+                "algs/polyfill/"
+            ]
         },
         "files": [
             "./algs/util.php"
