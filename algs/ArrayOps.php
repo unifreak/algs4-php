@@ -81,7 +81,7 @@ final class ArrayOps
         return $c;
     }
 
-    public static function main($args)
+    public static function main(array $args)
     {
         $a = [1, 7, 6, 5];
         dump("array a:", $a);

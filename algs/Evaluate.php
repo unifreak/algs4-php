@@ -1,6 +1,8 @@
 <?php
 namespace Algs;
 
+use Algs\ResizingArrayStack as Stack;
+
 
 /**
  * p.80
@@ -18,37 +20,40 @@ namespace Algs;
  */
 class Evaluate
 {
+    // % php Evaluate.php
+    // % ( 1 + ( ( 2 + 3 ) * ( 4 * 5 ) ) )
+    // % 101.0
     public static function main($args)
     {
-        $ops = new Stack();
-        $vals = new Stack();
+        $ops = new Stack('string', 100);
+        $vals = new Stack('string', 100);
         while (! StdIn::isEmpty()) {
-            $s = StdIn::readString();
-            switch ($s) {
-                case "(":
-                    break;
-                case "+":
-                case "-":
-                case "*":
-                case "/":
-                case "sqrt":
-                    $ops->push($s);
-                    break;
-                case ")":
-                    $op = $ops->pop();
-                    $v = $vals->pop();
-                    if ($op == "+")         $v = $vals->pop() + $v;
-                    elseif ($op == "-")     $v = $vals->pop() - $v;
-                    elseif ($op == "*")     $v = $vals->pop() * $v;
-                    elseif ($op == "/")     $v = $vals->pop() / $v;
-                    elseif ($op == "sqrt")  $v = sqrt($v);
-                    $vals->push($v);
-                    break;
-                default:
-                    $vals->push((double) $s);
-                    break;
-            }
+            dump(StdIn::readString());
+            // switch ($s) {
+            //     case "(":
+            //         break;
+            //     case "+":
+            //     case "-":
+            //     case "*":
+            //     case "/":
+            //     case "sqrt":
+            //         $ops->push($s);
+            //         break;
+            //     case ")":
+            //         $op = $ops->pop();
+            //         $v = $vals->pop();
+            //         if ($op == "+")         $v = $vals->pop() + $v;
+            //         elseif ($op == "-")     $v = $vals->pop() - $v;
+            //         elseif ($op == "*")     $v = $vals->pop() * $v;
+            //         elseif ($op == "/")     $v = $vals->pop() / $v;
+            //         elseif ($op == "sqrt")  $v = sqrt($v);
+            //         $vals->push($v);
+            //         break;
+            //     default:
+            //         $vals->push((double) $s);
+            //         break;
+            // }
         }
-        StdOut::println($vals->pop());
+        // StdOut::println($vals->pop());
     }
 }

@@ -21,6 +21,7 @@ class BinarySearch
         return -1;
     }
 
+    // % php BinarySearch ../resource/tinyW.txt < ../resource/tinyT.txt
     public static function main($args)
     {
         $whiteList = In::readInts($args[0]);

@@ -10,8 +10,6 @@ namespace Algs;
 
 final class StdIn
 {
-    private static $resetPos = null;
-
     private function __construct() { }
 
     /**
@@ -19,8 +17,12 @@ final class StdIn
      */
     public static function isEmpty()
     {
-        self::$resetPos = ftell(STDIN);
-        return feof(STDIN);
+        $before = ftell(STDIN);
+        if (fgetc(STDIN) === false) {
+            return true;
+        }
+        fseek(STDIN, $before);
+        return false;
     }
 
     public static function hasNextLine()
@@ -52,8 +54,6 @@ final class StdIn
 
     public static function readString()
     {
-        self::rollback();
-
         $c = fgetc(STDIN);
         // skip pre whitespace
         while (! feof(STDIN) && ctype_space($c)) {
@@ -69,18 +69,8 @@ final class StdIn
         return $s;
     }
 
-    private static function rollback()
-    {
-        if (self::$resetPos) {
-            fseek(STDIN, self::$resetPos);
-            self::$resetPos = null;
-        }
-    }
-
     public static function readInt()
     {
-        self::rollback();
-
         list($r) = fscanf(STDIN, "%d");
         if (! is_numeric($r)) {
             throw new \UnexpectedValueException(
@@ -93,8 +83,6 @@ final class StdIn
 
     public static function readDouble()
     {
-        self::rollback();
-
         list($r) = fscanf(STDIN, "%f");
         if (! is_double($r)) {
             throw new \UnexpectedValueException(
@@ -107,8 +95,6 @@ final class StdIn
 
     public static function readBoolean()
     {
-        self::rollback();
-
         $token = self::readString();
         if (strcasecmp($token, 'true') == 0)  return true;
         if (strcasecmp($token, 'false') == 0) return false;

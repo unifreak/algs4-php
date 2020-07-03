@@ -6,6 +6,7 @@ Only Algs namespace
 @todo When neccessary, use SplFixedArray (FixedCapacityStackOfStrings)
 Arr
 __constructStatic()
+只使用了 7.2 的特性
 
 # PHP Sucks
 - 泛型 (Stack<String>, Stack<Double>)
