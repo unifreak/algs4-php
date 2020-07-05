@@ -85,12 +85,6 @@ final class StdIn
     public static function readInt()
     {
         list($r) = fscanf(STDIN, "%d");
-        if (! is_numeric($r)) {
-            throw new \UnexpectedValueException(
-                "attemps to read an 'int' value from standard input,
-                but the next token is $r"
-            );
-        }
         return $r;
     }
 
@@ -121,6 +115,11 @@ final class StdIn
 
     public static function main()
     {
+        while (! self::isEmpty()) {
+            StdOut::println(self::readInt());
+        }
+        exit();
+
         StdOut::print("Type a string: ");
         $s = StdIn::readString();
         StdOut::println("Your string was: " . $s);
