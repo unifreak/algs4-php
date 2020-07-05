@@ -10,7 +10,7 @@ Only Algs namespace
 @todo When neccessary, use SplFixedArray (FixedCapacityStackOfStrings)
 Arr
 __constructStatic()
-只使用了 7.2 的特性
+使用了 7.2 的特性
 内嵌类使用命名空间 @see Stack.php
 
 ### PHP Sucks?

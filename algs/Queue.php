@@ -1,27 +1,23 @@
 <?php
-
-/**
- * p.94
- */
-
-namespace Algs\Stack;
+namespace Algs\Queue;
 
 class Node
 {
-    public $item;
+    public $item = null;
     public $next = null;
 }
 
+/**
+ * p.95
+ */
 
 namespace Algs;
-use Algs\Stack\Node as Node;
+use Algs\Queue\Node as Node;
 
-/**
- * 下压堆栈 (链表实现)
- */
-class Stack implements \Iterator
+class Queue implements \Iterator
 {
     private $first;
+    private $last;
     private $N = 0;
 
     // for Iterator
@@ -30,7 +26,7 @@ class Stack implements \Iterator
 
     public function isEmpty(): bool
     {
-        return $this->first == null; // 或 $this->N == 0
+        return is_null($this->first);
     }
 
     public function size(): int
@@ -38,24 +34,36 @@ class Stack implements \Iterator
         return $this->N;
     }
 
-    public function push($item): void
+    public function enqueue($item): void
     {
-        $oldFirst = $this->first;
-        $this->first = new Node();
-        $this->first->item = $item;
-        $this->first->next = $oldFirst;
+        $last = new Node();
+        $last->item = $item;
+        $last->next = null;
+        if ($this->isEmpty()) {
+            $this->first = $last; // 入队时, 注意维护队头结点
+            // fix warning: Creating default object from empty value
+            $this->last = $last;
+        } else {
+            $this->last->next = $last;
+            // PHP 没有指针, 对象靠引用传递, 这里必须重新设置 $this->last 引用的对象
+            $this->last = $last;
+        }
         $this->N++;
     }
 
-    public function pop()
+    public function dequeue()
     {
         $item = $this->first->item;
-        $this->first = $this->first->next;
+        $this->first = &$this->first->next;
+        if ($this->isEmpty()) {
+            $this->last = null; // 出队时, 注意维护队尾结点
+        }
         $this->N--;
         return $item;
     }
 
-    // Iterator implementation: LIFO
+    // Iterator implementation: FIFO
+    // @todo: Trait for Stack/Queue/Bag Iterator?
     // ===============================================================
 
     public function rewind() {
@@ -92,21 +100,22 @@ class Stack implements \Iterator
      */
     public static function main(array $args): void
     {
-        $s = new Stack();
-
+        $q = new Queue();
         while (! StdIn::isEmpty()) {
             $item = StdIn::readString();
-            if (is_null($item)) break;
+            if (is_null($item)) {
+                break;
+            }
 
             if ($item != '-') {
-                $s->push($item);
-            } elseif (! $s->isEmpty()) {
-                StdOut::print("{$s->pop()} ");
+                $q->enqueue($item);
+            } elseif (! $q->isEmpty()) {
+                StdOut::print("{$q->dequeue()} ");
             }
         }
-        StdOut::println("( {$s->size()} left on stack)");
+        StdOut::println("({$q->size()} left on queue)");
 
-        foreach ($s as $i => $item) {
+        foreach ($q as $i => $item) {
             StdOut::println("$i: $item");
         }
     }
