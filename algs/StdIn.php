@@ -13,16 +13,16 @@ final class StdIn
     private function __construct() { }
 
     /**
+     * 因为 feof() 必须读下一个字符才能判定是否输入结束, 这个方法基本上没用. 会看到书中
+     * isEmpty() 的检查一般用对 readChar() 或 readString() 的结果是否为空代替
      * @see <https://www.php.net/manual/en/function.feof.php> first comment
+     *
+     * 不知道有什么解决方法, 尝试过
+     * - 先读取一个字符, 再用 fseek 指向原先地址
      */
     public static function isEmpty()
     {
-        $before = ftell(STDIN);
-        if (fgetc(STDIN) === false) {
-            return true;
-        }
-        fseek(STDIN, $before);
-        return false;
+        return feof(STDIN);
     }
 
     public static function hasNextLine()
@@ -55,17 +55,30 @@ final class StdIn
     public static function readString()
     {
         $c = fgetc(STDIN);
-        // skip pre whitespace
-        while (! feof(STDIN) && ctype_space($c)) {
-            $c = fgetc(STDIN);
+        if ($c === false) {
+            return null;
         }
 
-        $s = "";
-        while (! feof(STDIN) && ! ctype_space($c) ) {
+        // skip pre whitespace
+        while ($c == " " || $c == "\t") {
+            $c = fgetc(STDIN);
+        }
+        // dump("prev got $c;");
+
+        $s = $c;
+        $c = fgetc(STDIN);
+        while ($c !== false && !ctype_space($c)) {
+            // var_dump("tail got:");
+            // var_dump($c.";");
+            // var_dump("strcmp space:" . strcmp(' ', $c));
+            // var_dump("strcmp tab:" . strcmp("\t", $c));
+            // var_dump("equal empty string: " . ($c == ' '));
+            // var_dump("equal line feed: " . ($c == PHP_EOL));
             $s .= $c;
             $c = fgetc(STDIN);
         }
 
+        // dump("read string: $s}");
         return $s;
     }
 
@@ -108,24 +121,27 @@ final class StdIn
 
     public static function main()
     {
-        StdOut::print("Type a string: ");
-        $s = StdIn::readString();
-        StdOut::println("Your string was: " . $s);
-        StdOut::println();
+        while (! StdIn::isEmpty()) {
+            dump("{".StdIn::readString()."}");
+        }
+        // StdOut::print("Type a string: ");
+        // $s = StdIn::readString();
+        // StdOut::println("Your string was: " . $s);
+        // StdOut::println();
 
-        StdOut::print("Type an int: ");
-        $a = StdIn::readInt();
-        StdOut::println("Your int was: " . $a);
-        StdOut::println();
+        // StdOut::print("Type an int: ");
+        // $a = StdIn::readInt();
+        // StdOut::println("Your int was: " . $a);
+        // StdOut::println();
 
-        StdOut::print("Type a boolean: ");
-        $b = StdIn::readBoolean();
-        StdOut::println("Your boolean was: " . $b);
-        StdOut::println();
+        // StdOut::print("Type a boolean: ");
+        // $b = StdIn::readBoolean();
+        // StdOut::println("Your boolean was: " . $b);
+        // StdOut::println();
 
-        StdOut::print("Type a double: ");
-        $c = StdIn::readDouble();
-        StdOut::println("Your double was: " . $c);
-        StdOut::println();
+        // StdOut::print("Type a double: ");
+        // $c = StdIn::readDouble();
+        // StdOut::println("Your double was: " . $c);
+        // StdOut::println();
     }
 }

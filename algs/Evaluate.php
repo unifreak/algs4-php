@@ -25,35 +25,37 @@ class Evaluate
     // % 101.0
     public static function main($args)
     {
-        $ops = new Stack('string', 100);
-        $vals = new Stack('string', 100);
+        $ops = new Stack('string', 50);
+        $vals = new Stack('float', 50);
         while (! StdIn::isEmpty()) {
-            dump(StdIn::readString());
-            // switch ($s) {
-            //     case "(":
-            //         break;
-            //     case "+":
-            //     case "-":
-            //     case "*":
-            //     case "/":
-            //     case "sqrt":
-            //         $ops->push($s);
-            //         break;
-            //     case ")":
-            //         $op = $ops->pop();
-            //         $v = $vals->pop();
-            //         if ($op == "+")         $v = $vals->pop() + $v;
-            //         elseif ($op == "-")     $v = $vals->pop() - $v;
-            //         elseif ($op == "*")     $v = $vals->pop() * $v;
-            //         elseif ($op == "/")     $v = $vals->pop() / $v;
-            //         elseif ($op == "sqrt")  $v = sqrt($v);
-            //         $vals->push($v);
-            //         break;
-            //     default:
-            //         $vals->push((double) $s);
-            //         break;
-            // }
+            $s = StdIn::readString();
+            if (is_null($s)) break;
+
+            switch ($s) {
+                case "(":
+                    break;
+                case "+":
+                case "-":
+                case "*":
+                case "/":
+                case "sqrt":
+                    $ops->push($s);
+                    break;
+                case ")":
+                    $op = $ops->pop();
+                    $v = $vals->pop();
+                    if ($op == "+")         $v = $vals->pop() + $v;
+                    elseif ($op == "-")     $v = $vals->pop() - $v;
+                    elseif ($op == "*")     $v = $vals->pop() * $v;
+                    elseif ($op == "/")     $v = $vals->pop() / $v;
+                    elseif ($op == "sqrt")  $v = sqrt($v);
+                    $vals->push($v);
+                    break;
+                default:
+                    $vals->push((double) $s);
+                    break;
+            }
         }
-        // StdOut::println($vals->pop());
+        StdOut::println($vals->pop());
     }
 }
