@@ -1,9 +1,6 @@
 <?php
 namespace Algs;
 
-use Algs\ResizingArrayStack as Stack;
-
-
 /**
  * p.80
  */
@@ -25,8 +22,8 @@ class Evaluate
     // 101.0
     public static function main($args)
     {
-        $ops = new Stack('string', 50);
-        $vals = new Stack('float', 50);
+        $ops = new Stack();
+        $vals = new Stack();
         while (! StdIn::isEmpty()) {
             $s = StdIn::readString();
             if (is_null($s)) break;

@@ -71,7 +71,7 @@ class ResizingArrayStack implements \Iterator
 
     public function rewind() {
         $this->pos = $this->N - 1;
-    } // do nothing
+    }
 
     public function current()
     {
@@ -93,11 +93,20 @@ class ResizingArrayStack implements \Iterator
         return isset($this->a[$this->pos]);
     }
 
+    /**
+     * % more tobe.txt
+     * to be or not to - be - - that - - - is
+     * % php ResizingArrayStack.php < tobe.txt
+     * to be not that or be (2 left on stack)
+     */
     public static function main($args)
     {
         $s = new ResizingArrayStack('string', 100);
         while (! StdIn::isEmpty()) {
             $item = StdIn::readString();
+            if (is_null($item)) {
+                break;
+            }
             if ($item != '-')
                 $s->push($item);
             else if (! $s->isEmpty()) StdOut::print($s->pop() . " ");

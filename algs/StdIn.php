@@ -13,9 +13,11 @@ final class StdIn
     private function __construct() { }
 
     /**
-     * 因为 feof() 必须读下一个字符才能判定是否输入结束, 这个方法基本上没用. 会看到书中
-     * isEmpty() 的检查一般用对 readChar() 或 readString() 的结果是否为空代替
-     * @see <https://www.php.net/manual/en/function.feof.php> first comment
+     * 因为 feof() 必须读下一个字符才能判定是否输入结束.
+     * 所以不能像书中一样直接做 isEmpty()检查, 会看到代码中还得配合对诸如 readString()
+     * 的结果是否为 null 的检查, 以提前跳出 isEmpty() 的 while 循环, 如
+     * @see Stack.php 的 main() 方法
+     * @see <https://www.php.net/manual/en/function.feof.php> 第一个评论
      *
      * 不知道有什么解决方法, 尝试过
      * - 先读取一个字符, 再用 fseek 指向原先地址

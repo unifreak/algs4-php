@@ -7,6 +7,7 @@ Only Algs namespace
 Arr
 __constructStatic()
 只使用了 7.2 的特性
+内嵌类使用命名空间 @see Stack.php
 
 # PHP Sucks
 - 泛型 (Stack<String>, Stack<Double>)
