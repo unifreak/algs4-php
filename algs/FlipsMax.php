@@ -13,6 +13,10 @@ class FlipsMax
         else                           return $y;
     }
 
+    /**
+     * % php FlipsMax.php 1000000
+     * 500281 tails wins
+     */
     public static function main($args)
     {
         $T = (int) $args[0];

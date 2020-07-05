@@ -7,6 +7,15 @@ namespace Algs;
 
 class Rolls
 {
+    /**
+     * % php Rolls.php 10000000
+     * 167308 1's
+     * 166540 2's
+     * 166087 3's
+     * 167051 4's
+     * 166422 5's
+     * 166592 6's
+     */
     public static function main($args)
     {
         $T = (int) $args[0];

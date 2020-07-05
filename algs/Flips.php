@@ -7,6 +7,12 @@ namespace Algs;
 
 class Flips
 {
+    /**
+     * % php Flips.php 10
+     * 5 heads
+     * 5 tails
+     * delta: 0
+     */
     public static function main($args)
     {
         $T = (int) $args[0];

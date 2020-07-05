@@ -31,6 +31,8 @@ final class StdRandom
     {
         $borderNum = count($border);
         switch ($borderNum) {
+            case 0:
+                return self::randomFloat();
             case 1:
                 return mt_rand(0, $border[0] - 1);
                 break;
@@ -45,6 +47,11 @@ final class StdRandom
                 throw new \InvalidArgumentException("too many arguments, receive only one or two");
                 break;
         }
+    }
+
+    public static function random(...$border): float
+    {
+        return self::uniform(...$border);
     }
 
     private static function randomFloat($low = 0.0, $high = 1.0)

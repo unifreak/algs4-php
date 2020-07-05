@@ -21,8 +21,8 @@ use Algs\ResizingArrayStack as Stack;
 class Evaluate
 {
     // % php Evaluate.php
-    // % ( 1 + ( ( 2 + 3 ) * ( 4 * 5 ) ) )
-    // % 101.0
+    // ( 1 + ( ( 2 + 3 ) * ( 4 * 5 ) ) )
+    // 101.0
     public static function main($args)
     {
         $ops = new Stack('string', 50);
