@@ -3,13 +3,17 @@ namespace Algs;
 
 /**
  * p.28
+ *
+ * 输入模型: 大小为 $N 的数组 $a
+ * 内循环: while 循环内所有语句
+ * 成本模型: 比较操作
  */
 
 class BinarySearch
 {
     public static function rank($key, array $a)
     {
-        // 数组必须是有序的
+        // 数组必须是从小到大有序的
         $lo = 0;
         $hi = count($a) - 1;
         while ($lo <= $hi) {

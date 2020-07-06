@@ -17,7 +17,7 @@ final class In
             }
             $this->fp = $fp;
         } catch (\Exception $e) {
-            throw new InvalidArgumentException("Could not open file $name");
+            throw new \InvalidArgumentException("Could not open file $name");
         }
     }
 
@@ -29,10 +29,15 @@ final class In
     public function readAllInts()
     {
         $fields = $this->readAllStrings();
-        foreach ($fields as $i => $val) {
-            $fields[$i] = (int) $val;
+        $ints = [];
+        $i = 0;
+        foreach ($fields as $val) {
+            if ($val == '') {
+                continue;
+            }
+            $ints[$i++] = (int) $val;
         }
-        return $fields;
+        return $ints;
     }
 
     public function readAllStrings()
@@ -53,9 +58,14 @@ final class In
         return fclose($this->fp);
     }
 
+    /**
+     * % php In.php ../resource/InTest.txt
+     */
     public static function main($args)
     {
-        dump("ReadInts() from ${args[0]}");
-        dump(In::readInts($args[0]));
+        StdOut::println("ReadInts() from ${args[0]}");
+        foreach (In::readInts($args[0]) as $i) {
+            StdOut::println($i);
+        }
     }
 }
