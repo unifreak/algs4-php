@@ -1,14 +1,38 @@
 <?php
 namespace Algs;
 
+/**
+ * p.77
+ */
+
 class Stats
 {
+    /**
+     * % php Stats.php
+     # 100
+     # 99
+     # 101
+     # 120
+     # 98
+     # 107
+     # 109
+     # 81
+     # 101
+     # 90
+     # Mean: 100.60
+     # Std dev: 10.51
+     */
     public static function main($args)
     {
         $numbers = new Bag();
 
-        while (! StdIn::isEmpty())
-            $numbers->add(StdIn::readDouble());
+        while (! StdIn::isEmpty()) {
+            $n = StdIn::readDouble();
+            if (is_null($n)) {
+                break;
+            }
+            $numbers->add($n);
+        }
         $N = $numbers->size();
 
         $sum = 0.0;

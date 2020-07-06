@@ -93,12 +93,6 @@ final class StdIn
     public static function readDouble()
     {
         list($r) = fscanf(STDIN, "%f");
-        if (! is_double($r)) {
-            throw new \UnexpectedValueException(
-                "attemps to read an 'float' value from standard input,
-                but the next token is " . self::readString()
-            );
-        }
         return $r;
     }
 

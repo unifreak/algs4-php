@@ -1,20 +1,9 @@
 <?php
+namespace Algs;
 
 /**
  * p.94
  */
-
-namespace Algs\Stack;
-
-class Node
-{
-    public $item;
-    public $next = null;
-}
-
-
-namespace Algs;
-use Algs\Stack\Node as Node;
 
 /**
  * 下压堆栈 (链表实现)
@@ -24,9 +13,7 @@ class Stack implements \Iterator
     private $first;
     private $N = 0;
 
-    // for Iterator
-    private $pos = 0;
-    private $current;
+    use IteratorTrait;
 
     public function isEmpty(): bool
     {
@@ -53,35 +40,6 @@ class Stack implements \Iterator
         $this->first = $this->first->next;
         $this->N--;
         return $item;
-    }
-
-    // Iterator implementation: LIFO
-    // ===============================================================
-
-    public function rewind() {
-        $this->current = $this->first;
-        $this->pos = $this->N - 1;
-    }
-
-    public function current()
-    {
-        return $this->current->item;
-    }
-
-    public function key()
-    {
-        return $this->pos;
-    }
-
-    public function next()
-    {
-        $this->current = $this->current->next;
-        --$this->pos;
-    }
-
-    public function valid()
-    {
-        return ! is_null($this->current);
     }
 
     /**
