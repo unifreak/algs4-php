@@ -4,5 +4,6 @@ composer.lock
 .tags
 .tags_sorted_by_file
 algs4-data.zip
+algs4-data/
 tmp.php
 tmp.txt
