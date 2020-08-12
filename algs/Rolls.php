@@ -4,7 +4,6 @@ namespace Algs;
 /**
  * p.44
  */
-
 class Rolls
 {
     /**

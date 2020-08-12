@@ -4,7 +4,6 @@ namespace Algs;
 /**
  * p.43
  */
-
 class FlipsMax
 {
     public static function max(Counter $x, Counter $y)

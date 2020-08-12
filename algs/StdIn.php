@@ -7,7 +7,6 @@ namespace Algs;
  * @todo  There should be a generic stream scanner like Java
  * NOTE: Does NOT support multibyte
  */
-
 final class StdIn
 {
     private function __construct() { }
@@ -54,7 +53,7 @@ final class StdIn
         return null;
     }
 
-    public static function readString()
+    private static function nextNonSpaceChar()
     {
         $c = fgetc(STDIN);
         if ($c === false) {
@@ -66,6 +65,14 @@ final class StdIn
             $c = fgetc(STDIN);
         }
         // dump("prev got $c;");
+        return $c;
+    }
+
+    public static function readString()
+    {
+        if (($c = self::nextNonSpaceChar()) === null) {
+            return null;
+        }
 
         $s = $c;
         $c = fgetc(STDIN);
@@ -86,14 +93,20 @@ final class StdIn
 
     public static function readInt()
     {
-        list($r) = fscanf(STDIN, "%d");
-        return $r;
+        // we can not use `fgets()`, becuase it will implicitly move file pointer
+        // to next line
+        if (($c = self::readString()) === null) {
+            return null;
+        }
+        return (int) $c;
     }
 
     public static function readDouble()
     {
-        list($r) = fscanf(STDIN, "%f");
-        return $r;
+        if (($c = self::readString()) === null) {
+            return null;
+        }
+       return (int) $c;
     }
 
     public static function readBoolean()

@@ -3,9 +3,8 @@ namespace Algs;
 
 /**
  * p.25, t.1.1.17
- * p.52, t.1.2.8
+ * p.51, t.1.2.8
  */
-
 final class In
 {
     public function __construct($name)
@@ -40,6 +39,11 @@ final class In
         return $ints;
     }
 
+    public static function readStrings($filename)
+    {
+        return (new In($filename))->readAllStrings();
+    }
+
     public function readAllStrings()
     {
         return mb_split("\s+", $this->readAll());
@@ -64,7 +68,7 @@ final class In
     public static function main($args)
     {
         StdOut::println("ReadInts() from ${args[0]}");
-        foreach (In::readInts($args[0]) as $i) {
+        foreach (In::readStrings($args[0]) as $i) {
             StdOut::println($i);
         }
     }

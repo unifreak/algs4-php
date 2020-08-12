@@ -5,7 +5,6 @@ namespace Algs;
  * p.25, t.1.1.17
  * p.51, t.1.2.9
  */
-
 class Out
 {
     public function __construct($name)

@@ -3,9 +3,7 @@ namespace Algs;
 
 /**
  * p.121
- */
-
-/**
+ *
  * @see DoublingTest 的改进版本
  *
  * 通过进行倍率试验, 可预测程序运行时间

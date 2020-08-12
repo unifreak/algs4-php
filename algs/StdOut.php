@@ -4,7 +4,6 @@ namespace Algs;
 /**
  * p.22, t.1.1.14
  */
-
 final class StdOut
 {
     private function __construct() { }

@@ -10,9 +10,7 @@ namespace Algs;
  *   数组的访问次数
  * 命题
  *   使用了 ~N^3 / 2 次数组访问
- *
  */
-
 class ThreeSum
 {
     /**

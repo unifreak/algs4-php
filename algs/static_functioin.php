@@ -3,9 +3,7 @@ namespace Algs;
 
 /**
  * p.13, t.1.1.5
- */
-
-/**
+ *
  * 绝对值
  */
 function abs($x)

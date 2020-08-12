@@ -4,7 +4,6 @@ namespace Algs;
 /**
  * p.77
  */
-
 class Stats
 {
     /**

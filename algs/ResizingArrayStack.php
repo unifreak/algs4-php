@@ -3,9 +3,7 @@ namespace Algs;
 
 /**
  * p.88
- */
-
-/**
+ *
  * resize() 解决了定容问题
  * 通过实现 \Iterator 接口可迭代
  *
@@ -94,9 +92,7 @@ class ResizingArrayStack implements \Iterator
     }
 
     /**
-     * % more tobe.txt
-     * to be or not to - be - - that - - - is
-     * % php ResizingArrayStack.php < tobe.txt
+     * % php ResizingArrayStack.php < ../resource/tobe.txt
      * to be not that or be (2 left on stack)
      */
     public static function main($args)

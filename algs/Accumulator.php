@@ -4,7 +4,6 @@ namespace Algs;
 /**
  * p.57, t.1.2.13
  */
-
 class Accumulator
 {
     private $total = 0.0;

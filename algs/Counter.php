@@ -6,7 +6,6 @@ use SGH\Comparable\Comparable;
 /**
  * p.39, t.1.2.1
  */
-
 class Counter implements Comparable
 {
     private $name;

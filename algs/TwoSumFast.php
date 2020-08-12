@@ -4,8 +4,6 @@ namespace Algs;
 /**
  * p.119
  */
-
-
 class TwoSumFast
 {
     /**

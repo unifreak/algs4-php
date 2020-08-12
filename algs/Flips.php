@@ -4,7 +4,6 @@ namespace Algs;
 /**
  * p.42
  */
-
 class Flips
 {
     /**

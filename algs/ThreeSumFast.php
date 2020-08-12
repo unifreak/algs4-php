@@ -6,7 +6,6 @@ namespace Algs;
  *
  * 使用二分查找优化 ThreeSum 性能
  */
-
 class ThreeSumFast
 {
     /**

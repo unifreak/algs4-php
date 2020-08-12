@@ -4,7 +4,6 @@ namespace Algs;
 /**
  * p.50
  */
-
 final class StringOps
 {
     public static function isPalindrom($s)

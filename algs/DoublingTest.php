@@ -4,7 +4,6 @@ namespace Algs;
 /**
  * p.111
  */
-
 class DoublingTest
 {
     public static function timeTrail($N): float

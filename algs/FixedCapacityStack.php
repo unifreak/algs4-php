@@ -4,9 +4,7 @@ namespace Algs;
 
 /**
  * p.84, t.1.3.4
- */
-
-/**
+ *
  * 通过构造函数传入的 $type 参数模拟 Java 泛型
  * 解决了 FixedCapacityStackOfString 类型约束的问题
  *

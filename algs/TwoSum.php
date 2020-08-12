@@ -4,10 +4,8 @@ namespace Algs;
 /**
  * p.117, t.1.4.7
  *
- * 为了优化 @see ThreeSum, 先来看看其简化版本 TwoSum
+ * 为了优化 @link ThreeSum, 先来看看其简化版本 TwoSum
  */
-
-
 class TwoSum
 {
     /**

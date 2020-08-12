@@ -10,7 +10,6 @@ namespace Algs;
  * Algs\Util
  * ...?
  */
-
 class Stopwatch
 {
     private $start;

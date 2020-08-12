@@ -4,7 +4,6 @@ namespace Algs;
 /**
  * p.98
  */
-
 class Bag implements \Iterator
 {
     private $first = null;

@@ -3,9 +3,7 @@ namespace Algs;
 
 /**
  * p.1
- */
-
-/**
+ *
  * 欧几里得算法 (也叫辗转相除法), 求最大公约数
  */
 function gcd($p, $q) // gcd: Greatest Common Divisor

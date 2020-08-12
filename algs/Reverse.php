@@ -4,7 +4,6 @@ namespace Algs;
 /**
  * p.79
  */
-
 class Reverse
 {
     public static function main(array $args): void

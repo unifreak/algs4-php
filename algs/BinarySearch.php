@@ -8,7 +8,6 @@ namespace Algs;
  * 内循环: while 循环内所有语句
  * 成本模型: 比较操作
  */
-
 class BinarySearch
 {
     public static function rank($key, array $a)

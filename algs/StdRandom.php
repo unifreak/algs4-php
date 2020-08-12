@@ -4,7 +4,6 @@ namespace Algs;
 /**
  * p.18, t.1.1.8
  */
-
 final class StdRandom
 {
     private static $seed;
