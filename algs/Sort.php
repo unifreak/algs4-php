@@ -14,7 +14,6 @@ use SGH\Comparable\Comparable;
  *
  * 成本模型
  *   比较和交换的数量. 对于不交换元素的算法, 则计算访问数组的次数
- *
  */
 abstract class Sort
 {
@@ -70,6 +69,8 @@ abstract class Sort
      * % php ShellSort.php ../resource/words3.txt
      *
      * % php TopDownMergeSort.php ../resource/words3.txt
+     *
+     * % php BottomUpMergeSort.php ../resource/words3.txt
      *
      * all bad bed bug dad dim dug egg ... sky sob tag tap tar tip wad was wee yes yet zoo
      */

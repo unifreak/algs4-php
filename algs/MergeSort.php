@@ -8,6 +8,9 @@ namespace Algs;
  *
  * 归并排序最吸引人的性质是它能够保证任意长度为 N 的数组排序所需时间和 NlogN 成正比,
  * 它的主要缺点则是它所需的额外空间和 N 成正比
+ *
+ * 命题
+ *   - 归并排序是一种渐进最优的基于比较排序的算法
  */
 abstract class MergeSort extends Sort
 {
