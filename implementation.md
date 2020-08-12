@@ -3,7 +3,7 @@
 <This is not completed yet, to be elaborated...>
 
 ### Programming model
-Indexed array only
+Indexed array only, only when nessisary
 尽量与原书变量名一致
 Comparable -> sgh/comparable
 Only Algs namespace
