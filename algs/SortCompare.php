@@ -38,6 +38,10 @@ class SortCompare
      * % php SortCompare.php Insertion Selection 1000 100
      * For 1000 random Doubles
      *      Insertion is 1.1 times faster than Selection
+     *
+     * % php SortCompare.php Shell Insertion 10000 100
+     * For 10000 random Doubles
+     *   Shell is 121.6 times faster than Insertion
      */
     public static function main(array $args): void
     {

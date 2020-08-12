@@ -69,6 +69,8 @@ abstract class Sort
      *
      * % php ShellSort.php ../resource/words3.txt
      *
+     * % php TopDownMergeSort.php ../resource/words3.txt
+     *
      * all bad bed bug dad dim dug egg ... sky sob tag tap tar tip wad was wee yes yet zoo
      */
     public static function main(array $args): void
