@@ -10,6 +10,9 @@
 
 it's computer science, so lgN means log base 2
 
+没有将代码根据章节组织, 应该以 README 中的 @see 为导向
+
+ClassMap?
 
 # TODO
 - 表格?
@@ -17,6 +20,7 @@ it's computer science, so lgN means log base 2
 - _underscore_ not working in README.md
 - fill @todo
 - search @?
+- wiki pages
 
 # 基础
 
@@ -228,6 +232,11 @@ Knuth 认为, 原则上我们可能构造出一个**数学模型**来描述任�
 
 ## 归并排序
 
+@see
+- MergeSort
+- TopDownMergeSort
+- BottomUpMergeSort
+
 不要对算法初始实现的性能盖棺定论
 
 **分治思想**: 将大问题分割成小问题分别解决, 然后用所有小问题的答案来解决大问题
@@ -238,4 +247,8 @@ Knuth 认为, 原则上我们可能构造出一个**数学模型**来描述任�
     之所以至少有 N! 个, 是因为 N 个不同主键会有 N! 中不同排列, 如果少于 N!, 则肯定有遗漏
     之所以至多有 2^h 个, 是因为二叉树的性质
 这是一个重要结论, 适用于任何能想到的基于比较的算法. 准确的上界为软件工程师保证性能提供了空间, 而准确的下界可以避免浪费时间在不可能的性能改进上
+
+## 快速排序
+
+
 
