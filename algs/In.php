@@ -39,6 +39,44 @@ final class In
         return $ints;
     }
 
+    private function nextNonSpaceChar()
+    {
+        $c = fgetc($this->fp);
+        if ($c === false) {
+            return null;
+        }
+
+        // skip pre whitespace
+        while ($c == " " || $c == "\t") {
+            $c = fgetc($this->fp);
+        }
+        // dump("prev got $c;");
+        return $c;
+    }
+
+    public function readString()
+    {
+        if (($c = $this->nextNonSpaceChar()) === null) {
+            return null;
+        }
+
+        $s = $c;
+        $c = fgetc($this->fp);
+        while ($c !== false && !ctype_space($c)) {
+            // var_dump("tail got:");
+            // var_dump($c.";");
+            // var_dump("strcmp space:" . strcmp(' ', $c));
+            // var_dump("strcmp tab:" . strcmp("\t", $c));
+            // var_dump("equal empty string: " . ($c == ' '));
+            // var_dump("equal line feed: " . ($c == PHP_EOL));
+            $s .= $c;
+            $c = fgetc($this->fp);
+        }
+
+        // dump("read string: $s}");
+        return $s;
+    }
+
     public static function readStrings($filename)
     {
         return (new In($filename))->readAllStrings();
@@ -57,6 +95,11 @@ final class In
         return null;
     }
 
+    public function isEmpty()
+    {
+        return feof($this->fp);
+    }
+
     public function close()
     {
         return fclose($this->fp);
@@ -67,9 +110,15 @@ final class In
      */
     public static function main($args)
     {
-        StdOut::println("ReadInts() from ${args[0]}");
+        StdOut::println("readStrings() from ${args[0]}");
         foreach (In::readStrings($args[0]) as $i) {
             StdOut::println($i);
+        }
+
+        StdOut::println("ReadString() from ${args[0]}");
+        $in = new self($args[0]);
+        while (! $in->isEmpty()) {
+            StdOut::println($in->readString());
         }
     }
 }

@@ -38,5 +38,4 @@ class Arr extends \SplFixedArray
             throw new \InvalidArgumentException("expecting a type $this->type");
         }
     }
-
 }

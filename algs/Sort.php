@@ -76,6 +76,8 @@ abstract class Sort
      *
      * % php ThreeWayQuickSort.php ../resource/words3.txt
      *
+     * % php HeapSort.php ../resource/words3.txt
+     *
      * all bad bed bug dad dim dug egg ... sky sob tag tap tar tip wad was wee yes yet zoo
      */
     public static function main(array $args): void

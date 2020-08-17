@@ -11,6 +11,12 @@ Only Algs namespace
 Arr
 __constructStatic()
 使用了 7.2 的特性
+function overload
+- sort and doSort
+- fromThis, fromThat
+
+做除法时一定要注意是否需要强转成 (int)
+= null -> unset()
 
 ### PHP Sucks?
 - 泛型 (Stack<String>, Stack<Double>)
