@@ -83,6 +83,7 @@ abstract class Sort
     public static function main(array $args): void
     {
         $a = In::readStrings($args[0]);
+        dump($a);
         static::sort($a);
         assert(static::isSorted($a));
         static::show($a);

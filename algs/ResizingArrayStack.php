@@ -35,7 +35,7 @@ class ResizingArrayStack implements \Iterator
     }
 
     /**
-     * 这里并没有使用 SplFixedArray 内置的 setSize() 方法
+     * PHP 其实也可以用 SplFixedArray 内置的 setSize() 方法
      */
     private function resize(int $max)
     {

@@ -7,16 +7,28 @@ Indexed array only, only when nessisary
 尽量与原书变量名一致
 Comparable -> sgh/comparable
 Only Algs namespace
-@todo When neccessary, use SplFixedArray (FixedCapacityStackOfStrings)
-Arr
+
+@todo When neccessary, use SplFixedArray (FixedCapacityStackOfStrings) -> Arr:
+- 一般基于数组的, 用 Arr 代替
+- 基于链表的则不是, 因为链表没有定长限制, 而且在 PHP 中对每种结点实现类型限制也比较麻烦
+会导致 API 不一致, 比如 ST 的, 有些需要传入类型, 有些不需要
+
 __constructStatic()
+
 使用了 7.2 的特性
+
+file larger than 100M are not uploaded due to github restriction
+- leipzig1M.txt
+
 function overload
 - sort and doSort
 - fromThis, fromThat
+- getForm, putTo
 
 做除法时一定要注意是否需要强转成 (int)
 = null -> unset()
+
+no Inner Class (Node)
 
 ### PHP Sucks?
 - 泛型 (Stack<String>, Stack<Double>)

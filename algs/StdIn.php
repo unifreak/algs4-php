@@ -61,7 +61,7 @@ final class StdIn
         }
 
         // skip pre whitespace
-        while ($c == " " || $c == "\t") {
+        while ($c == " " || $c == "\t" || $c == "\n") {
             $c = fgetc(STDIN);
         }
         // dump("prev got $c;");

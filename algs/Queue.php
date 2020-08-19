@@ -4,7 +4,6 @@ namespace Algs;
 /**
  * p.95
  */
-
 class Queue implements \Iterator
 {
     private $first;
