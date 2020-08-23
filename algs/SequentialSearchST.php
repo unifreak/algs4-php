@@ -85,6 +85,8 @@ class SequentialSearchST
     }
 
     /**
+     * 标准索引用例
+     *
      * % php SequentialSearchST.php
      * S E A R C H E X A M P L E
      * L 11

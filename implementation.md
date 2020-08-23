@@ -35,6 +35,17 @@ no Inner Class (Node)
 - 面向对象 (String.charAt())
 - 多字节支持 ([] 对中文无用)
 - `$$$$$$`, `$this`
+- No hashCode() @see p.295 默认实现, 32bit, equals() 配合
+
+    `Hashable` is an interface which allows objects to be used as keys. It’s an alternative to spl_object_hash(), which determines an object’s hash based on its handle
+    - hash() is used to return a scalar value to be used as the object's hash value, which determines where it goes in the hash table
+    - equals() is used to determine if two objects are equal
+
+    https://stackoverflow.com/a/8521021/3776039 ?
+
+    For a more portable solution you may also consider the generic hash(). hash("crc32b", $str) will return the same string as str_pad(dechex(crc32($str)), 8, '0', STR_PAD_LEFT).
+
+
 
 ## Code Style
 尽量与原书一直: 缩进, 省略, 变量名

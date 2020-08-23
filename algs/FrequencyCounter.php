@@ -1,6 +1,6 @@
 <?php
 namespace Algs;
-// 更改这句以测试不同的 ST 实现
+// 更改这句以测试不同的 ST 实现, 可能需要微调某些参数
 // use Algs\BinarySearchST as ST;
 use Algs\BST as ST;
 

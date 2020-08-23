@@ -19,7 +19,8 @@
             ]
         },
         "files": [
-            "./algs/util.php"
+            "./algs/util.php",
+            "./algs/polyfill/hashCode.php"
         ]
     }
 }
