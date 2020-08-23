@@ -29,6 +29,7 @@ function overload
 = null -> unset()
 
 no Inner Class (Node)
+hashCode()
 
 ### PHP Sucks?
 - 泛型 (Stack<String>, Stack<Double>)
