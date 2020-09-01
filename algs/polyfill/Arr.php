@@ -15,17 +15,22 @@ class Arr extends \SplFixedArray
 
     public function __construct($type, $size)
     {
+        $this->type = $type;
         parent::__construct($size);
+        if ($this->type == 'bool') {
+            for ($i = 0; $i < $size; $i++) {
+                $this[$i] = false;
+            }
+        }
 
         if (! is_string($type)) {
             throw new \InvalidArgumentException("type must be a string");
         }
-        $this->type = $type;
+
     }
 
     public function offsetSet($offset, $value)
     {
-        parent::offsetSet($offset, $value);
 
         if (in_array($this->type, self::primeTypes)) {
             $checkType = "is_" . $this->type;
@@ -37,5 +42,7 @@ class Arr extends \SplFixedArray
         if (! $isExpected) {
             throw new \InvalidArgumentException("expecting a type $this->type");
         }
+
+        parent::offsetSet($offset, $value);
     }
 }

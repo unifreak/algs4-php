@@ -25,7 +25,7 @@ namespace Algs;
 class LinearProbingHashST
 {
     private $N;         // 符号表中键值对的总数
-    private $M;    // 线性探测表的大小
+    private $M;         // 线性探测表的大小
     private $keyType;
     private $keys;      // 键
     private $valType;
@@ -58,7 +58,7 @@ class LinearProbingHashST
 
     private function hash($key): int
     {
-        return abs(hashCode($key)) % $this->M;
+        return abs(hashCode($key) % $this->M);
     }
 
     private function resize(int $cap)
@@ -74,11 +74,12 @@ class LinearProbingHashST
         $this->M = $t->M;
     }
 
-    private function put($key, $val)
+    public function put($key, $val)
     {
         // 将 M 加倍
         // 注意: 这会导致散列表的大小总是 2 的幂, 导致 hash() 只能使用 hashCode() 返回值的低位, p.307
         if ($this->N >= $this->M / 2) $this->resize(2 * $this->M);
+        $i = $this->hash($key);
         for ($i = $this->hash($key); $this->keys[$i] != null; $i = ($i + 1) % $this->M) {
             if ($this->keys[$i] == $key) {
                 $this->vals[$i] = $val;

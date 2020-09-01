@@ -9,6 +9,8 @@ namespace Algs;
  */
 final class StdIn
 {
+    private $stashedLine = null;
+
     private function __construct() { }
 
     /**
@@ -28,15 +30,12 @@ final class StdIn
 
     public static function hasNextLine()
     {
-        $before = ftell(STDIN);
-        $has = fgets(STDIN) !== false;
-        fseek(STDIN, $before);
-        return $has;
+        return ! self::isEmpty();
     }
 
     public static function readLine()
     {
-        return fgets(STDIN);
+        return rtrim(fgets(STDIN));
     }
 
     public static function readChar()
@@ -124,11 +123,6 @@ final class StdIn
 
     public static function main()
     {
-        while (! self::isEmpty()) {
-            StdOut::println(self::readInt());
-        }
-        exit();
-
         StdOut::print("Type a string: ");
         $s = StdIn::readString();
         StdOut::println("Your string was: " . $s);

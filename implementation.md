@@ -33,6 +33,8 @@ hashCode()
 
 ### PHP Sucks?
 - 泛型 (Stack<String>, Stack<Double>)
+    + Arr: pass as in args
+    + Strict Type Trait @todo
 - 面向对象 (String.charAt())
 - 多字节支持 ([] 对中文无用)
 - `$$$$$$`, `$this`
@@ -46,6 +48,8 @@ hashCode()
 
     For a more portable solution you may also consider the generic hash(). hash("crc32b", $str) will return the same string as str_pad(dechex(crc32($str)), 8, '0', STR_PAD_LEFT).
 
+- 重载
+    + if type a else type b
 
 
 ## Code Style

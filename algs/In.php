@@ -20,6 +20,14 @@ final class In
         }
     }
 
+    public function readInt()
+    {
+        if (($c = $this->readString()) === null) {
+            return null;
+        }
+        return (int) $c;
+    }
+
     public static function readInts($filename)
     {
         return (new In($filename))->readAllInts();
@@ -105,6 +113,19 @@ final class In
         return fclose($this->fp);
     }
 
+    public function hasNextLine()
+    {
+        $before = ftell($this->fp);
+        $has = fgets($this->fp) !== false;
+        fseek($this->fp, $before);
+        return $has;
+    }
+
+    public function readLine()
+    {
+        return rtrim(fgets($this->fp));
+    }
+
     /**
      * % php In.php ../resource/InTest.txt
      */
@@ -119,6 +140,17 @@ final class In
         $in = new self($args[0]);
         while (! $in->isEmpty()) {
             StdOut::println($in->readString());
+        }
+
+        StdOut::println("ReadInts() from ${args[0]}");
+        foreach (In::readInts($args[0]) as $i) {
+            StdOut::println($i);
+        }
+
+        StdOut::println("ReadLine() from ${args[0]}");
+        $in = new self($args[0]);
+        while ($in->hasNextLine()) {
+            StdOut::print($in->readLine());
         }
     }
 }
