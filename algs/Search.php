@@ -4,7 +4,7 @@ namespace Algs;
 /**
  * p.337, p.338
  *
- * 找到和起点 s 连通的所有顶点
+ * 无向图的连通性问题: 找到和起点 s 连通的所有顶点
  *
  * 我们已经见过 Search API 的另一种实现, 使用 UF (@todo e.4.1.8)
  * - 实现 marked(): @see UF

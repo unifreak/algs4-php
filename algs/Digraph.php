@@ -2,24 +2,22 @@
 namespace Algs;
 
 /**
- * t.4.1.1, p.336
+ * t.4.2.2, p.366
  *
- * 由顶点索引的整形链表数组实现的图
+ * 有向图数据类型
  *
- * 扩展
- * - 支持添加和删除顶点  --> 使用符号表 (ST) 代替由顶点索引构成的数组
- * - 支持删除边和检查边是否存在 --> 使用 SET 代替 Bag (称为**邻接集**)
+ * 这段代码与 Graph 基本相同, 与 Graph 的区别:
+ * - addEdge() 只调用 add() 一次
+ * - 多了 reverse() 方法, 它将所有边方向反转. 这样用例就可以找出 "指向" 每个顶点的所有边
  */
-class Graph
+class Digraph
 {
-    private $V; // 顶点数目
-    private $E; // 边的数目
-    private $adj; // 邻接表
+    private $V;
+    private $E;
+    private $adj;
 
     /**
-     * 创建一幅无向图
-     * - 如果传入一个整数: 创建一个含有 V 个顶点但不含有边的图
-     * - 如果传入一个输入流: 从标准输入流 in 从读入一幅度
+     * 创建一幅含有 V 个顶点但没有边的有向图
      */
     public function __construct($in)
     {
@@ -31,7 +29,7 @@ class Graph
     }
 
     /**
-     * 初始化邻接表, 创建一个不含边的无向图
+     * 初始化邻接表
      */
     private function initAdjList(int $V)
     {
@@ -59,7 +57,7 @@ class Graph
     }
 
     /**
-     * 顶点数
+     * 顶点总数
      */
     public function V(): int
     {
@@ -67,7 +65,7 @@ class Graph
     }
 
     /**
-     * 边数
+     * 边的总数
      */
     public function E(): int
     {
@@ -75,17 +73,18 @@ class Graph
     }
 
     /**
-     * 向图中添加一条边 v-w
+     * 向有向图中添加一条边 v->w
+     *
+     * 和 Graph 的区别在于, 只调用了 add() 一次
      */
     public function addEdge(int $v, int $w): void
     {
-        $this->adj[$v]->add($w); // 将 w 添加到 v 的链表中
-        $this->adj[$w]->add($v); // 将 v 添加到 w 的链表中
+        $this->adj[$v]->add($w); // v -> w
         $this->E++;
     }
 
     /**
-     * 和 v 相邻的所有顶点
+     * 由 v 指出的边连接的所有顶点
      */
     public function adj(int $v): \Iterator
     {
@@ -93,42 +92,16 @@ class Graph
     }
 
     /**
-     * 对象的字符串表示
+     * 该图的反向图
      */
-    public function __toString()
+    public function reverse(): self
     {
-        $s = "$this->V vertices, $this->E edges\n";
+        $R = new Digraph($this->V);
         for ($v = 0; $v < $this->V; $v++) {
-            $s .= "$v: ";
             foreach ($this->adj($v) as $w) {
-                $s .= "$w ";
+                $R->addEdge($w, $v); // w -> v
             }
-            $s .= "\n";
         }
-        return $s;
-    }
-
-    /**
-     * % php Graph.php ../resource/tinyG.txt
-     * 13 vertices, 13 edges
-     * 0: 6 2 1 5
-     * 1: 0
-     * 2: 0
-     * 3: 5 4
-     * 4: 5 6 3
-     * 5: 3 4 0
-     * 6: 0 4
-     * 7: 8
-     * 8: 7
-     * 9: 11 10 12
-     * 10: 9
-     * 11: 9 12
-     * 12: 11 9
-     */
-    public static function main(array $args): void
-    {
-        $in = new In($args[0]);
-        $G = new Graph($in);
-        StdOut::println($G);
+        return $R;
     }
 }

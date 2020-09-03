@@ -83,7 +83,7 @@ class CC
     public static function main(array $args): void
     {
         $G = new Graph(new In($args[0]));
-        $cc = new CC($G);
+        $cc = new self($G);
         $M = $cc->count();
         StdOut::println("$M components");
 

@@ -3,16 +3,13 @@ namespace Algs;
 use Algs\BST as ST;
 
 /**
- * t.4.1.8, p.354, p.356
+ * p.376
  *
- * 符号图数据类型
+ * 符号有向图数据类型
  *
- * @todo 数据文件太大的话, 直接报 segement fault 11 错误
- *
- * 注意, 这是一幅二分图 -- 电影顶点之间或者演员结点之间没有边相连
- * 二分图的性质自动完成了反向索引. 这将成为处理更复杂的和图有关的问题的基础
+ * SymbolDiraph 和 SymbolGraph 代码几乎相同, 只需把所有 Graph 替换为 Digraph 即可
  */
-class SymbolGraph
+class SymbolDigraph
 {
     private $st;    // 符号名 -> 索引
     private $keys;  // 索引 -> 符号名 (反向索引)
@@ -46,7 +43,7 @@ class SymbolGraph
             $this->keys[$this->st->get($name)] = $name;
         }
 
-        $this->G = new Graph($this->st->size());
+        $this->G = new Digraph($this->st->size());
         $in = new In($stream);
         while ($in->hasNextLine()) {
             $a = explode($sp, $in->readLine());
@@ -82,9 +79,9 @@ class SymbolGraph
     }
 
     /**
-     * 隐藏的 Graph 对象
+     * 隐藏的 Digraph 对象
      */
-    public function G(): Graph
+    public function G(): Digraph
     {
         return $this->G;
     }
@@ -92,7 +89,7 @@ class SymbolGraph
     /**
      * 这个用例正好是 C3.5 研究过的方向索引的功能 @see LookUpIndex
      *
-     * %  php SymbolGraph.php ../resource/routes.txt " "
+     * %  php SymbolDigraph.php ../resource/routes.txt " "
      * JFK
      *     ORD
      *     ATL
@@ -121,7 +118,7 @@ class SymbolGraph
     {
         $filename = $args[0];
         $delim = $args[1];
-        $sg = new SymbolGraph($filename, $delim);
+        $sg = new SymbolDigraph($filename, $delim);
 
         $G = $sg->G();
         while (StdIn::hasNextLine()) {
