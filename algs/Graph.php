@@ -37,7 +37,7 @@ class Graph
     {
         $this->V = $V;
         $this->E = 0;
-        $this->adj = new Arr(Bag::class, $V);   // 创建邻接表
+        $this->adj = new Arr(Bag::class, $V);   // 创建邻接表: 使用 Bag 对象保证顺序无关
         for ($v = 0; $v < $this->V; $v++) {     // 将所有链表初始化为空
             $this->adj[$v] = new Bag();
         }

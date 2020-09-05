@@ -29,11 +29,11 @@ class MinPQ extends PQ
     }
 
     /**
-     * 与 MaxPQ 中的 less 刚好相反
+     * 与 MaxPQ 中的 less 刚好相反 (较小数优先)
      */
     protected function less(int $i, int $j): bool
     {
-        if ($this->type == Comparable::class) {
+        if ($this->pq[$i] instanceof Comparable) {
             return $this->pq[$i]->compareTo($this->pq[$j]) > 0;
         } else {
             return $this->pq[$i] > $this->pq[$j];

@@ -33,6 +33,14 @@ final class In
         return (new In($filename))->readAllInts();
     }
 
+    public function readDouble()
+    {
+        if (($c = $this->readString()) === null) {
+            return null;
+        }
+        return (double) $c;
+    }
+
     public function readAllInts()
     {
         $fields = $this->readAllStrings();

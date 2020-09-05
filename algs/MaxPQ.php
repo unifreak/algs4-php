@@ -32,7 +32,7 @@ class MaxPQ extends PQ
 
     protected function less(int $i, int $j): bool
     {
-        if ($this->type == Comparable::class) {
+        if ($this->pq[$i] instanceof Comparable) {
             return $this->pq[$i]->compareTo($this->pq[$j]) < 0;
         } else {
             return $this->pq[$i] < $this->pq[$j];

@@ -37,7 +37,7 @@ class IndexMinPQ extends PQ
      */
     protected function less(int $i, int $j): bool
     {
-        if ($this->type == Comparable::class) {
+        if ($this->keys[$this->pq[$i]] instanceof Comparable) {
             return $this->keys[$this->pq[$i]]->compareTo($this->keys[$this->pq[$j]]) > 0;
         } else {
             return $this->keys[$this->pq[$i]] > $this->keys[$this->pq[$j]];
