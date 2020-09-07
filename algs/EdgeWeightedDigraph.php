@@ -2,23 +2,22 @@
 namespace Algs;
 
 /**
- * p.395, p.394, t.4.3.3
+ * t.4.4.3, p.415
  *
- * 加权无向图的数据类型
+ * 加权有向图的数据类型
  *
- * 与 @see Graph 一样:
- * - 每条边都会出现两次
- * - 允许存在平行边. 也可以用更复杂的方式消除平行边, 比如只保留平行的边中的权重最小者
- * - 允许存在自环. 但没并没有实现统计它们, 这对 MST 算法没有影响, 因为 MST 肯定不会含有环
+ * 这个实现混合了 @see EdgeWeightedGraph 和 Digraph 类
+ * 与 Digraph 一样, 每条边在邻接表中出现一次: 如果一条边从 v 指向 w, 它只会出现在 v 的邻接表中
+ * 这个类可以处理自环和平行边
  */
-class EdgeWeightedGraph
+class EdgeWeightedDigraph
 {
     private $V;
     private $E;
     private $adj;
 
     /**
-     * 创建一幅含有 V 个顶点的加权无向图
+     * 创建一幅含有 V 个顶点的加权有向图
      * - 如果传入一个整数: 创建一个含有 V 个顶点但不含有边的图
      * - 如果传入一个输入流: 从标准输入流 in 从读入一幅度
      */
@@ -56,7 +55,7 @@ class EdgeWeightedGraph
             $v = $in->readInt();             // 读取一个顶点
             $w = $in->readInt();             // 读取另一个顶点
             $weight = $in->readDouble();
-            $this->addEdge(new Edge($v, $w, $weight)); // 添加一条连接它们的边
+            $this->addEdge(new DirectedEdge($v, $w, $weight)); // 添加一条连接它们的边
         }
     }
 
@@ -79,12 +78,9 @@ class EdgeWeightedGraph
     /**
      * 向图中添加一条边 e
      */
-    public function addEdge(Edge $e): void
+    public function addEdge(DirectedEdge $e): void
     {
-        $v = $e->either();
-        $w = $e->other($v);
-        $this->adj[$v]->add($e);
-        $this->adj[$w]->add($e);
+        $this->adj[$e->from()]->add($e);
         $this->E++;
     }
 
@@ -104,9 +100,7 @@ class EdgeWeightedGraph
         $bag = new Bag();
         for ($v = 0; $v < $this->V; $v++) {
             foreach ($this->adj[$v] as $e) {
-                if ($e->other($v) > $v) {   // 这个判断用于去重
-                    $bag->add($e);
-                }
+                $bag->add($e);
             }
         }
         return $bag;

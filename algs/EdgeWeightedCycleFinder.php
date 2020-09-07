@@ -2,18 +2,19 @@
 namespace Algs;
 
 /**
- * p.372, t.4.2.5
+ * p.446, e.4.4.12
  *
  * 寻找有向环
+ * 同 @see DirectedCycle, 修改其为使用 DirectedEdge 和 EdgeWeightedDigraph 两个类
  */
-class DirectedCycle
+class EdgeWeightedCycleFinder
 {
     private $marked;
     private $hasCycle = false;
     private $cycle;   // 有向环中的所有顶点 (如果存在)
     private $onStack; // 递归调用的栈上的所有顶点. 当找到一条边 v->w 且 w 在栈中时就找到了一个有向环
 
-    public function __construct(Digraph $G)
+    public function __construct(EdgeWeightedDigraph $G)
     {
         $this->onStack = new Arr('bool', $G->V());
         $this->marked = new Arr('bool', $G->V());
@@ -25,11 +26,12 @@ class DirectedCycle
     /**
      * 通过 DFS 判定是否含有有向环
      */
-    private function dfs(Digraph $G, int $v): void
+    private function dfs(EdgeWeightedDigraph $G, int $v): void
     {
         $this->onStack[$v] = true;
         $this->marked[$v] = true;
-        foreach ($G->adj($v) as $w) {
+        foreach ($G->adj($v) as $e) {
+            $w = $e->to();
             if ($this->hasCycle()) {
                 return;                  // 提前结束
             } else if (! $this->marked[$w]) {
@@ -55,18 +57,18 @@ class DirectedCycle
     /**
      * 有向环中的所有顶点 (如果存在的话)
      */
-    public function cycle(): \Iterator
+    public function cycle(): ?\Iterator
     {
         return $this->cycle;
     }
 
     /**
-     * php DirectedCycle.php ../resource/tinyDG.txt
+     * php EdgeWeightedCycleFinder.php ../resource/tinyDG.txt
      * has cycle
      */
     public static function main(array $args): void
     {
-        $G = new Digraph(new In($args[0]));
+        $G = new EdgeWeightedDigraph(new In($args[0]));
         $cycle = new self($G);
         if (! $cycle->hasCycle()) {
             StdOut::print("NOT ");
