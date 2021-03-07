@@ -43,8 +43,11 @@ class Stack implements \Iterator
     /**
      * % more tobe.txt
      * to be or not to - be - - that - - - is
+     * 
      * % php ResizingArrayStack.php < ../resource/tobe.txt
      * to be not that or be (2 left on stack)
+     * 1: is
+     * 0: to
      */
     public static function main(array $args): void
     {

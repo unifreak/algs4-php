@@ -1,7 +1,6 @@
 <?php
 namespace Algs;
 
-
 /**
  * p.233, p.236, t.3.1.4
  *
@@ -49,6 +48,19 @@ class SequentialSearchST
      *
      * 对于链表, 为了删除指定任意键, 标准做法是使用双向链表
      * 这段代码则展示了如何使用单向链表进行删除. 这里用的递归, 也可用循环实现
+     * 
+     * 如对于无序链表: first -> 4:C -> 3:R -> 2:A -> 1:E -> 0:S
+     * 调用 delete(2) 以删除 A:
+     * 
+     *   first =  deleteAt(first, 2)
+     *            first -> deleteAt(4:C, 2)
+     *                     4:C -> deleteAt(3:R, 2)
+     *                            3:R -> deleteAt(2:A, 2)
+     *                                   返回 1:E (x->next)
+     *                            返回 3:R (x)
+     *                     返回 4:C (x)
+     *            返回 first 
+     *                            
      */
     public function delete($key): void
     {

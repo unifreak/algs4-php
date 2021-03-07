@@ -47,7 +47,8 @@ class BinarySearchST
     {
         if ($this->isEmpty()) return null;
         $i = $this->rank($key);
-        // 注意对未命中的判断条件: $i < $this->N
+        // 因为 rank() 返回的是表中小于给定键的数量, 所以这里的命中判定条件为
+        //      i < N && keys[i] == key
         // 当查找的键超过最大键时, 就会出现 $i == $this->N 的情况
         if ($i < $this->N && $this->keys[$i] == $key) return $this->vals[$i];
         else return null;

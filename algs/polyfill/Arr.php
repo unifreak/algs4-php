@@ -26,7 +26,6 @@ class Arr extends \SplFixedArray
         if (! is_string($type)) {
             throw new \InvalidArgumentException("type must be a string");
         }
-
     }
 
     public function offsetSet($offset, $value)

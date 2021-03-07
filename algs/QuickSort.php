@@ -5,6 +5,7 @@ namespace Algs;
  * p.182, p.184
  *
  * 快速排序: 由 C.A.R Hoare 在 1960 年发明
+ * 递归地将子数组 a[lo..hi] 排序. 先用 partition() 将 a[j] 放入合适位置, 然后再递归调用将其他位置元素排序
  *
  * 目前学过的算法中, 这是第一个能下面两个优点结合起来的排序算法
  * - 原地排序 (只需要一个很小的辅助栈)
@@ -32,7 +33,7 @@ namespace Algs;
  *
  * 命题
  * - 将长度为 N 的无重复数组排序, 快速排序平均需要 ~2NlnN 次比较 (以及 1/6 的交换)
- * - 快速排序最多需要约 N^2/2 比较, 但随即打乱数组能够预防这种情况
+ * - 快速排序最多需要约 N^2/2 比较, 但随机打乱数组能够预防这种情况
  *   证明略 @see p.186
  * 性质
  * - T: 快速排序是最快的通用排序算法
@@ -66,10 +67,10 @@ class QuickSort extends Sort
         $i = $lo; $j = $hi+1;   // 左右扫描指针. @note: it's hi+1, not hi
         $v = $a[$lo];           // 切分元素
         while (true) {          // 扫描左右, 检查扫描是否结束并交换元素
-            while (self::less($a[++$i], $v)) if ($i == $hi) break;
-            while (self::less($v, $a[--$j])) if ($j == $lo) break;
+            while (self::less($a[++$i], $v)) if ($i == $hi) break; // 找到左边较大元素
+            while (self::less($v, $a[--$j])) if ($j == $lo) break; // 找到右边较小元素
             if ($i >= $j) break;
-            self::exch($a, $i, $j);
+            self::exch($a, $i, $j);                                // 交换位置
         }
         self::exch($a, $lo, $j); // 将 v=a[j] 放入正确位置
         return $j;               // a[lo..j-1] <= a[j] <= a[j+1..hi] 达成

@@ -62,6 +62,15 @@ abstract class Sort
     /**
      * 从标准输入读取字符串, 将他们排序并输出
      *
+     * % more ../resource/words3.txt
+     * bed bug dad yes zoo
+     * now for tip ilk dim
+     * tag jot sob nob sky
+     * hut men egg few jay
+     * owl joy rap gig wee
+     * was wad fee tap tar
+     * dug jam all bad yet
+     * 
      * % php SelectionSort.php ../resource/words3.txt
      *
      * % php InsertionSort.php ../resource/words3.txt
@@ -83,7 +92,6 @@ abstract class Sort
     public static function main(array $args): void
     {
         $a = In::readStrings($args[0]);
-        dump($a);
         static::sort($a);
         assert(static::isSorted($a));
         static::show($a);

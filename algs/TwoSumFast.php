@@ -3,6 +3,8 @@ namespace Algs;
 
 /**
  * p.119
+ *
+ * 改进 @see TwoSum.php 性能
  */
 class TwoSumFast
 {

@@ -50,6 +50,13 @@ class Transaction implements Comparable
         else return 0;
     }
 
+    /**
+     * % php Transaction.php
+     * Turing      6/17/1990   644.08
+     * Tarjan      3/26/2002  4121.85
+     * Knuth       6/14/1999   288.34
+     * Dijkstra    8/22/2007  2678.40
+     */
     public static function main(array $args): void
     {
         $a = new Arr(Transaction::class, 4);

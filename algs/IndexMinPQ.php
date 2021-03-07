@@ -6,8 +6,12 @@ namespace Algs;
  *
  * 基于堆的索引优先队列: 较小数优先
  *
- * 索引优先队列允许用例通过索引引用进入优先队列中的元素. 可将它看成能够快速访问数组的一个特定子
- * 集中的最小元素的数据结构. @see Multiway 用它解决了_多向归并_问题
+ * 索引优先队列允许用例通过_索引_引用进入优先队列中的元素. 
+ * 理解这种数据结构的的一种方式, 是将它看成能够快速访问最小元素的数组. 
+ * 实际上, 更进一步地, 可将它看成能够快速访问数组的一个特定子集中的最小元素的数据结构. 
+ *
+ * 客户代码可以使用索引, 指定要删除或更改的元素.
+ * @see Multiway 用它解决了_多向归并_问题
  *
  * 命题 p.204
  * - Q: 插入元素, 改变优先级, 删除和删除最小元素操作所需的比较次数和 logN 成正比
@@ -16,9 +20,9 @@ namespace Algs;
 class IndexMinPQ extends PQ
 {
     protected $N;       // PQ 中的元素数量
-    protected $pq;      // 索引二叉堆, 由 1 开始
-    protected $qp;      // 逆序: qp[pq[i]] = pq[qp[i]] = i
-    protected $keys;    // 有优先级之分的元素
+    protected $pq;      // 索引二叉堆, 从 1 开始. pq[N] = i (指定的索引)
+    protected $qp;      // pq 的逆转: qp[i] = N (在二叉堆中的索引)
+    protected $keys;    // keys[i] 即 i 元素的优先级
     protected $type;    // 类型
 
     public function __construct(string $type, int $maxN)
@@ -45,22 +49,22 @@ class IndexMinPQ extends PQ
     }
 
     /**
-     * 是否存在索引为 k 的元素
+     * 是否存在索引为 i 的元素
      */
-    public function contains(int $k): bool
+    public function contains(int $i): bool
     {
-        return $this->qp[$k] != -1;
+        return $this->qp[$i] != -1;
     }
 
     /**
-     * 插入一个元素, 将它和索引 k 相关联
+     * 插入一个元素, 将它和索引 i 相关联
      */
-    public function insert(int $k, $key): void
+    public function insert(int $i, $key): void
     {
-        $this->N++;
-        $this->qp[$k] = $this->N;
-        $this->pq[$this->N] = $k;
-        $this->keys[$k] = $key;
+        $this->N++;  // NOTE: 插入 (0, key) 时, 这句代码保证了从 1 开始存储
+        $this->qp[$i] = $this->N; // 但是索引从 0 开始
+        $this->pq[$this->N] = $i;
+        $this->keys[$i] = $key;
         $this->swim($this->N);
     }
 
@@ -94,26 +98,26 @@ class IndexMinPQ extends PQ
     }
 
     /**
-     * 将索引为 k 的元素设为 item
+     * 将索引为 i 的元素设为 item
      */
-    public function change(int $k, $key): void
+    public function change(int $i, $key): void
     {
-        $this->keys[$k] = $key;
-        $this->swim($this->qp[$k]);
-        $this->sink($this->qp[$k]);
+        $this->keys[$i] = $key;
+        $this->swim($this->qp[$i]);
+        $this->sink($this->qp[$i]);
     }
 
     /**
-     * 删去索引 k 及其相关联的元素
+     * 删去索引 i 及其相关联的元素
      */
-    public function delete(int $k): void
+    public function delete(int $i): void
     {
-        $index = $this->qp[$k];
+        $index = $this->qp[$i];
         $this->exch($index, $this->N--);
         $this->swim($index);
         $this->sink($index);
-        unset($this->keys[$k]);
-        $this->qp[$k] = -1;
+        unset($this->keys[$i]);
+        $this->qp[$i] = -1;
     }
 
     protected function exch(int $i, int $j): void

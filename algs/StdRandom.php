@@ -56,6 +56,7 @@ final class StdRandom
     private static function randomFloat($low = 0.0, $high = 1.0)
     {
         $max = mt_getrandmax();
+        // @coodie
         return $low + mt_rand(0, $max-1) / mt_getrandmax() * ($high - $low);
     }
 

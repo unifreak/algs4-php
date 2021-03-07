@@ -5,6 +5,8 @@ namespace Algs;
  * p.170
  *
  * **归并**即将两个有序的数组归并成一个更大的有序数组
+ * 
+ * @see TopDownMergeSort, BottomUpMergeSort
  *
  * 归并排序最吸引人的性质是它能够保证任意长度为 N 的数组排序所需时间和 NlogN 成正比,
  * 它的主要缺点则是它所需的额外空间和 N 成正比
@@ -17,7 +19,7 @@ abstract class MergeSort extends Sort
     private static $aux = [];
 
     /**
-     * 原地归并: 将 $a[$lo...min] 和 $a[$mid+1...$hi] 归并
+     * 原地归并: 将 $a[$lo...mid] 和 $a[$mid+1...$hi] 归并
      */
     public static function merge(array &$a, int $lo, int $mid, int $hi)
     {
@@ -25,7 +27,7 @@ abstract class MergeSort extends Sort
         $j = $mid + 1;
 
         // 将 $a[$lo...$hi] 复制到辅助数组
-        for ($k = 0; $k <= $hi; $k++) {
+        for ($k = $lo; $k <= $hi; $k++) {
             self::$aux[$k] = $a[$k];
         }
 

@@ -24,7 +24,10 @@ class BinarySearch
         return -1;
     }
 
-    // % php BinarySearch ../resource/tinyW.txt < ../resource/tinyT.txt
+    // % php BinarySearch.php ../resource/tinyW.txt < ../resource/tinyT.txt
+    // 50
+    // 99
+    // 13
     public static function main($args)
     {
         $whiteList = In::readInts($args[0]);
