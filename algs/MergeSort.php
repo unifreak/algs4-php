@@ -4,7 +4,7 @@ namespace Algs;
 /**
  * p.170
  *
- * **归并**即将两个有序的数组归并成一个更大的有序数组
+ * **归并** 即将两个有序的数组归并成一个更大的有序数组
  * 
  * @see TopDownMergeSort, BottomUpMergeSort
  *

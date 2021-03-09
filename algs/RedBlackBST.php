@@ -59,7 +59,7 @@ class RedBlackBST extends BST
      *         /   \                   / \
      *       E~S   >S                <E  E~S
      *
-     * 这种简洁的代码是我们使用递归实现二叉查找树的各种方法的主要原因, 它使得旋转操作成为了
+     * 这种代码的简洁性是我们使用递归实现二叉查找树的各种方法的主要原因, 它使得旋转操作成为了
      * 普通插入操作的一个简单补充
      */
     private function rotateLeft($h)
@@ -76,7 +76,12 @@ class RedBlackBST extends BST
 
     /**
      * 右旋转, 将红色右链接转换为红色左链接
-     * 与左旋转类似
+     *
+     *              S <- h              E <-x
+     *           //   \               /  \\
+     *     x -> E     >S            <E    S <- h
+     *        /   \                      /  \ 
+     *      <E   E~S                   E~S  >S
      */
     private function rotateRight($h)
     {
@@ -93,6 +98,11 @@ class RedBlackBST extends BST
     /**
      * 通过转换链接的颜色来分解 4-结点
      * 这项操作最重要的性质在于它和旋转操作一样是_局部变换_
+     *
+     *          |                            ||
+     *          E <- h                       E <-h
+     *       //   \\                       /   \
+     *      A      S       -->           A      S
      */
     private function flipColors($h)
     {
@@ -206,7 +216,7 @@ class RedBlackBST extends BST
     /**
      * @todo p.283, p.290, p.291
      */
-    public function delete()
+    public function delete($key)
     {
 
     }
@@ -214,12 +224,12 @@ class RedBlackBST extends BST
 
 class RBTNode
 {
-    public $key; // 键
-    public $val; // 关联的值
-    public $left; // 左子树
-    public $right; // 右子树
-    public $N; // 子树中结点总数
-    public $color; // 由其父结点指向它的链接的颜色
+    public $key;    // 键
+    public $val;    // 关联的值
+    public $left;   // 左子树
+    public $right;  // 右子树
+    public $N;      // 子树中结点总数
+    public $color;  // 由其_父_结点指向它的链接的颜色
 
     public function __construct($key, $val, int $N, bool $color)
     {

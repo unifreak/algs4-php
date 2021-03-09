@@ -5,10 +5,10 @@ namespace Algs;
  * p.171
  *
  * 自顶向下的归并排序: 化整为零, 然后递归
- * 基于原地归并的抽象实现了另一种递归归并, 这也是应用高效算法设计中**分治思想**的最典型例子之一
+ * 基于原地归并的抽象实现了另一种递归归并, 这也是应用高效算法设计中 **分治思想** 的最典型例子之一
  *
  * 命题
- *   - 需要 1/2NlogN 至 NlgN 次比较
+ *   - F: 需要 1/2NlogN 至 NlgN 次比较
  *     可结合下面的树状图理解:
  *                                    a[0..15]
  *
@@ -20,12 +20,14 @@ namespace Algs;
  *
  *     每个树中的结点都表示一个 sort() 方法通过 merge() 方法归并而成的子数组. 这个树正好有 n=lgN 层.
  *     对于 0 到 n-1 之间的任意 k, 自顶向下的第 k 层有 2^k 个子数组, 每个数组的长度为 2^(n-k), 归并
- *     最多需要 2^(n-k) 次比较. 因此每层的比较次数为 2^k * 2^(n-k) = 2^n, n 层总共为 n2^n=NlgN
+ *     最多需要 2^(n-k) 次比较. 因此每层的比较次数为 2^k * 2^(n-k) = 2^n, n 层总共为:
+ *         
+ *         n(2^n)= lgN (2^(lgN)) = NlgN
  *
  *     证明: @see p.173
  *
- *   - 最多需要 6NlgN 次数组访问
- *     证明: 每次归并需要访问数组 6N 次 (2N 用来复制, 2N 用来将排序号的元素移动回去, 另外最多需要比较 2N 次 @?)
+ *   - G: 最多需要 6NlgN 次数组访问 @?
+ *     证明: 每次归并需要访问数组 6N 次 (2N 用来复制, 2N 用来将排序好的元素移动回去, 另外最多需要比较 2N 次)
  *     需要 lgN 次归并, 故得
  *
  * 改进思路 @todo
@@ -40,14 +42,36 @@ class TopDownMergeSort extends MergeSort
         self::doSort($a, 0, count($a)-1);
     }
 
+    /**
+     * 如排序 a[0..15]:
+     * 
+     *     doSort(a, 0, 15)
+     *         doSort(a, 0, 7)                  // 将左半边排序...
+     *             doSort(a, 0, 3)
+     *                 doSort(a, 0, 1)
+     *                     merge(a, 0, 0, 1)
+     *                 doSort(a, 2, 3)
+     *                     merge(a, 2, 2, 3)
+     *                 merge(a, 0, 1, 3)
+     *             doSort(a, 4, 7)
+     *                 doSort(a, 4, 5)
+     *                     merge(a, 4, 4, 5)
+     *                 doSort(a, 6, 7)
+     *                     merge(a, 6, 6, 7)
+     *                 merge(a, 4, 5, 7)
+     *             merge(a, 0, 3, 7)
+     *         doSort(a, 8, 15)                 // 将右半边排序...
+     *             ...
+     *     merge(a, 0, 7, 15)                   // 归并结果
+     */
     private static function doSort(array &$a, int $lo, int $hi)
     {
         if ($hi <= $lo) {
             return;
         }
         $mid = (int) ($lo + ($hi - $lo) / 2);
-        self::doSort($a, $lo, $mid); // 将左半边排序
-        self::doSort($a, $mid+1, $hi); // 将右半边排序
-        self::merge($a, $lo, $mid, $hi); // 归并结果
+        self::doSort($a, $lo, $mid);    // 将左半边排序
+        self::doSort($a, $mid+1, $hi);  // 将右半边排序
+        self::merge($a, $lo, $mid, $hi);// 归并结果
     }
 }

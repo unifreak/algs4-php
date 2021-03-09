@@ -29,7 +29,6 @@ class ThreeWayQuickSort extends QuickSort
         $v = $a[$lo];
         while ($i <= $gt) {
             // 这里因为要区分等于和大于, 所以没有使用 less()
-            // @todo Sort.php should have greater() & equals()
             if      ($a[$i] < $v) self::exch($a, $lt++, $i++);
             else if ($a[$i] > $v) self::exch($a, $i, $gt--);
             else                  $i++;
