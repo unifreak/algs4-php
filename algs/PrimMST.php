@@ -49,17 +49,17 @@ class PrimMST extends MST
         $this->distTo[0] = 0.0;
         $this->pq->insert(0, 0.0);
         while (! $this->pq->isEmpty()) {
-            $this->visit($G, $this->pq->delMin());
+            $this->visit($G, $this->pq->delMin()); // 最小的横切边
         }
     }
 
     private function visit(EdgeWeightedGraph $G, int $v): void
     {
-        $this->marked[$v] = true;
-        foreach ($G->adj($v) as $e) {
+        $this->marked[$v] = true;       // 最小的横切边加入 MST 中
+        foreach ($G->adj($v) as $e) {   // 连接 (新加入 MST 的) v 顶点的新的横切边, 加入到优先队列
             $w = $e->other($v);
             if ($this->marked[$w]) continue;
-            if ($e->weight() < $this->distTo[$w]) {
+            if ($e->weight() < $this->distTo[$w]) { // 更新 w 顶点到 MST 中的最短边和距离
                 $this->edgeTo[$w] = $e;
                 $this->distTo[$w] = $e->weight();
                 if ($this->pq->contains($w)) $this->pq->change($w, $this->distTo[$w]);

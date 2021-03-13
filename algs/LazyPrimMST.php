@@ -11,7 +11,7 @@ namespace Algs;
  *   成正比, 所需的时间与 ElogE 成正比 (最坏情况)
  *   证明: 算法的瓶颈在于优先队列的 insert() 和 delMin() 方法中比较边的权重的次数. 优先队列中最多
  *   可能有 E 条边, 这就是空间需求的上限. 在最坏情况下, 一次插入的成本为 ~lgE, 删除最小元素的成本为
- *   ~2lgE (@see 命题 Q). 因为最多只能插入 E 条边, 删除 E 次最小元素, 时间上线显而易见
+ *   ~2lgE (@see 命题 Q). 因为最多只能插入 E 条边, 删除 E 次最小元素, 时间上限显而易见
  *
  * 改进: 即时实现 @see PrimMST
  */
@@ -33,19 +33,20 @@ class LazyPrimMST extends MST
             $v = $e->either(); $w = $e->other($v);
 
             // 跳过失效的边
-            // 连接新加入树中的顶点与其他已经在树中顶点的所有边都失效了, 因为这样的边都已经不是
-            // 横切边了, 因为它的两个顶点都在树中.
+            // 连接新加入树中的顶点与其他已经在树中顶点的所有边都失效了,
+            // 因为它的两个顶点都在树中, 这样的边都已经不是横切边了.
             // 这里使用延时实现, 即这些边仍留在优先队列中, 等到要删除它们的时候再检查边的有效性
             if ($this->marked[$v] && $this->marked[$w]) continue;
 
             $this->mst->enqueue($e);     // 将边添加到树中
-            if (! $this->marked[$v]) $this->visit($G, $v); // 将顶点 (v 或 w) 添加到树中
+            // 将未在 MST 中的顶点 (v 或 w) 添加到树中, 将新的横切边添加到优先队列中
+            if (! $this->marked[$v]) $this->visit($G, $v);
             if (! $this->marked[$w]) $this->visit($G, $w);
         }
     }
 
     /**
-     * 标记顶点 v 并将所有连接 v 和未被标记顶点的边加入 pq
+     * 标记顶点 v 并将所有连接 v 和未被标记顶点的边 (横切边) 加入 pq
      */
     private function visit(EdgeWeightedGraph $G, int $v): void
     {

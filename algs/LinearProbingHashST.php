@@ -8,7 +8,7 @@ namespace Algs;
  *
  * 开放地址散列表
  * : 用大小为 M 的数组保存 N 个键值对, 其中 M > N. 需要依靠数组中的空位解决碰撞冲突.
- *   其核心思想是与其将内存用作链表, 不如将它们作为在 散列表中的空元素.
+ *   其核心思想是与其将内存用作链表, 不如将它们作为在散列表中的空元素.
  *   开放地址散列表中最简单的方法叫做
  * 线性探测法
  * : 当碰撞发生时, 直接检查(_探测_) 散列表中下一个位置
@@ -79,9 +79,10 @@ class LinearProbingHashST
         // 将 M 加倍
         // 注意: 这会导致散列表的大小总是 2 的幂, 导致 hash() 只能使用 hashCode() 返回值的低位, p.307
         if ($this->N >= $this->M / 2) $this->resize(2 * $this->M);
-        $i = $this->hash($key);
+
         for ($i = $this->hash($key); $this->keys[$i] != null; $i = ($i + 1) % $this->M) {
-            if ($this->keys[$i] == $key) {
+            // 使用 i=(i+1)%M 增长, 确保索引始终在 M 内
+            if ($this->keys[$i] == $key) { // 如果已经有, 则更新
                 $this->vals[$i] = $val;
                 return;
             }
@@ -150,16 +151,16 @@ class LinearProbingHashST
 
     /**
      * % php SeparateChainingHashST.php < ../resource/tinyST.txt
-     * P  10
      * A  8
-     * R  3
-     * S  0
      * C  4
      * E  12
      * H  5
-     * X  7
      * L  11
      * M  9
+     * P  10
+     * R  3
+     * S  0
+     * X  7
      */
     public static function main(array $args): void
     {

@@ -29,12 +29,11 @@ namespace Algs;
  *   分别是被标记过的和没有被标记过的, 例如 v-x. 根据算法, 在标记了 v 之后必然会发现 x, 因此
  *   这样的边是不存在的. 前后矛盾. 每个顶点都会被访问一次保证了时间上限 (检查标记的耗时和度数成
  *   正比).
- *
  */
 class DepthFirstSearch implements Search
 {
-    private $marked;
-    private $count;
+    private $marked; // 标记每个顶点是否被访问过
+    private $count;  // 连通的结点数量
 
     public function __construct(Graph $G, int $s)
     {

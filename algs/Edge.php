@@ -7,7 +7,7 @@ use SGH\Comparable\Comparable;
  *
  * 带权重的边的数据类型
  *
- * 用例可以使用 other($v) 得到边的两一个顶点. 当两个顶点都是未知的时候, 可以使用惯用代码
+ * 用例可以使用 other($v) 得到边的另一个顶点. 当两个顶点都是未知的时候, 可以使用惯用代码
  * `$v=$e->either(), $w=$e->other($v)` 来访问 Edge 对象的两个顶点
  */
 class Edge implements Comparable

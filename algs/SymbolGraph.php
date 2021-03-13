@@ -5,7 +5,7 @@ use Algs\BST as ST;
 /**
  * t.4.1.8, p.354, p.356
  *
- * 符号图数据类型
+ * 符号图
  *
  * @todo 数据文件太大的话, 直接报 segement fault 11 错误
  *
@@ -20,22 +20,22 @@ class SymbolGraph
 
     /**
      * 根据 stream 指定的文件构造图, 使用 sp 来分割顶点名
+     *
+     * 我们定义用例输入格式如下:
+     * - 顶点名为字符串
+     * - 用指定的分隔符来隔开顶点名
+     * - 每一行都表示一组边的集合, 每一条边都连接着这一行的第一个名称表示的顶点和其他名称表示的顶点
+     * - 顶点总数 V 和边的总数 E 都是隐式定义的
      */
     public function __construct(string $stream, string $sp)
     {
         $this->st = new ST();
         $in = new In($stream);
-        /**
-         * 我们定义用例输入格式如下:
-         * - 顶点名为字符串
-         * - 用指定的分隔符来隔开顶点名
-         * - 每一行都表示一组边的集合, 每一条边都连接着这一行的第一个名称表示的顶点和其他名称表示的顶点
-         * - 顶点总数 V 和边的总数 E 都是隐式定义的
-         */
         while ($in->hasNextLine()) {
             $a = explode($sp, $in->readline());
             for ($i = 0; $i < count($a); $i++) {
                 if (! $this->st->contains($a[$i])) {
+                    // key: 符号 (如 JFK); val: st 当前大小, 用作索引
                     $this->st->put($a[$i], $this->st->size());
                 }
             }
@@ -68,7 +68,7 @@ class SymbolGraph
     /**
      * s 的索引
      */
-    public function index(string $s): int
+    public function index(string $s): ?int
     {
         return $this->st->get($s);
     }
@@ -90,9 +90,9 @@ class SymbolGraph
     }
 
     /**
-     * 这个用例正好是 C3.5 研究过的方向索引的功能 @see LookUpIndex
+     * 用例 1: 正好是 C3.5 研究过的反向索引的功能 @see LookUpIndex
      *
-     * %  php SymbolGraph.php ../resource/routes.txt " "
+     * % php SymbolGraph.php ../resource/routes.txt " "
      * JFK
      *     ORD
      *     ATL
@@ -101,17 +101,9 @@ class SymbolGraph
      *     LAS
      *     PHX
      *
+     * 用例 2: 名 Kevin Bacon 的游戏, 找到社交网路中两人之间间隔的度数
+     *
      * % php SymbolGraph.php ../resource/movies.txt "/"
-     * Tin Men (1987)
-     *     Hershey, Barbara
-     *     Geppi, Cindy
-     *     Jones, Kathy (II)
-     *     ...
-     *     Herr, Marcia
-     *     Sills, Ellen
-     *     Pohlman, Patricia
-     *     ...
-     *     DeBoy, David
      * Bacon, Kevin
      *     Friday the 13th (1980)
      *     Footloose (1984)
@@ -126,6 +118,10 @@ class SymbolGraph
         $G = $sg->G();
         while (StdIn::hasNextLine()) {
             $source = StdIn::readLine();
+            if (! $sg->contains($source)) {
+                StdOut::println("$source not in database");
+                return;
+            }
             foreach ($G->adj($sg->index($source)) as $w) {
                 StdOut::println("    {$sg->name($w)}");
             }

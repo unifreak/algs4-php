@@ -12,8 +12,8 @@ namespace Algs;
  */
 class Graph
 {
-    private $V; // 顶点数目
-    private $E; // 边的数目
+    private $V;   // 顶点数目
+    private $E;   // 边的数目
     private $adj; // 邻接表
 
     /**
@@ -59,6 +59,16 @@ class Graph
     }
 
     /**
+     * 向图中添加一条边 v-w
+     */
+    public function addEdge(int $v, int $w): void
+    {
+        $this->adj[$v]->add($w); // 将 w 添加到 v 的链表中
+        $this->adj[$w]->add($v); // 将 v 添加到 w 的链表中
+        $this->E++;
+    }
+
+    /**
      * 顶点数
      */
     public function V(): int
@@ -72,16 +82,6 @@ class Graph
     public function E(): int
     {
         return $this->E;
-    }
-
-    /**
-     * 向图中添加一条边 v-w
-     */
-    public function addEdge(int $v, int $w): void
-    {
-        $this->adj[$v]->add($w); // 将 w 添加到 v 的链表中
-        $this->adj[$w]->add($v); // 将 v 添加到 w 的链表中
-        $this->E++;
     }
 
     /**

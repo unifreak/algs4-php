@@ -5,7 +5,7 @@ use Algs\BST as ST;
 /**
  * p.376
  *
- * 符号有向图数据类型
+ * 符号有向图
  *
  * SymbolDiraph 和 SymbolGraph 代码几乎相同, 只需把所有 Graph 替换为 Digraph 即可
  */
@@ -89,7 +89,7 @@ class SymbolDigraph
     /**
      * 这个用例正好是 C3.5 研究过的方向索引的功能 @see LookUpIndex
      *
-     * %  php SymbolDigraph.php ../resource/routes.txt " "
+     * % php SymbolDigraph.php ../resource/routes.txt " "
      * JFK
      *     ORD
      *     ATL
@@ -98,7 +98,7 @@ class SymbolDigraph
      *     LAS
      *     PHX
      *
-     * % php SymbolGraph.php ../resource/movies.txt "/"
+     * % php SymbolDigraph.php ../resource/movies.txt "/"
      * Tin Men (1987)
      *     Hershey, Barbara
      *     Geppi, Cindy

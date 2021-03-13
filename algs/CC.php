@@ -24,7 +24,7 @@ class CC
 {
     private $marked;
     private $id;        // 基于顶点索引的数组. 如果 v 属于第 i 个连通分量, 则 id[v] 为 i
-    private $count = 0;
+    private $count = 0; // 连通分量数
 
     public function __construct(Graph $G)
     {
@@ -33,7 +33,7 @@ class CC
         for ($s = 0; $s < $G->V(); $s++) {
             if (! $this->marked[$s]) {
                 $this->dfs($G, $s);
-                $this->count++;
+                $this->count++; // 递增的计算连通分量 id
             }
         }
     }

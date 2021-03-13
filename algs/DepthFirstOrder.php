@@ -26,7 +26,7 @@ class DepthFirstOrder
      * 所有顶点的逆后序排列 (用栈存储, 实现对 post 逆序)
      * 注意, 一幅有向无环图的拓扑排序即为所有顶点的逆后续排列 @see Topological
      */
-    private $reversePost;   //
+    private $reversePost;
 
     public function __construct(Digraph $G)
     {
