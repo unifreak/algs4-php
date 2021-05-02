@@ -74,7 +74,7 @@ class CC
     }
 
     /**
-     * php CC.php ../resource/tinyG.txt
+     * php CC.php ../data/tinyG.txt
      * 3 components
      * 6 5 4 3 2 1 0
      * 8 7

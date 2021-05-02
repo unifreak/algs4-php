@@ -9,7 +9,7 @@ namespace Algs;
 class DegreesOfSeparation
 {
     /**
-     * % php DegreesOfSeparation.php ../resource/movies.txt "/" "Bacon, Kevin"
+     * % php DegreesOfSeparation.php ../data/movies.txt "/" "Bacon, Kevin"
      * Grant, Cary
      * Bacon, Kevin
      * Footloose (1984)

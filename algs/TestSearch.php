@@ -10,11 +10,11 @@ use Algs\DepthFirstSearch as Search;
 class TestSearch
 {
     /**
-     * % php TestSearch ../resource/tinyG.txt 0
+     * % php TestSearch ../data/tinyG.txt 0
      * 0 1 2 3 4 5 6
      * NOT connected
      *
-     * % php TestSearch ../resource/tinyG.txt 9
+     * % php TestSearch ../data/tinyG.txt 9
      * 9 10 11 12
      * NOT connected
      */

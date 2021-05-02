@@ -184,10 +184,10 @@ class BinarySearchST
     }
 
     /**
-     * % more ../resource/tinyST.txt
+     * % more ../data/tinyST.txt
      * S E A R C H E X A M P L E
      *
-     * % php BinarySearchST.php 10 < ../resource/tinyST.txt
+     * % php BinarySearchST.php 10 < ../data/tinyST.txt
      * A 8
      * C 4
      * E 12

@@ -24,7 +24,7 @@ class BinarySearch
         return -1;
     }
 
-    // % php BinarySearch.php ../resource/tinyW.txt < ../resource/tinyT.txt
+    // % php BinarySearch.php ../data/tinyW.txt < ../data/tinyT.txt
     // 50
     // 99
     // 13

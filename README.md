@@ -5,9 +5,9 @@
 把 Java 转成 PHP 这种工作, 在现实中可能没有多大意义. 这个项目纯粹出于个人目的, 自然也希望能对其他程序员能有所帮助.
 
 项目的 wiki 整理了书中每个章节的要点. wiki 中对于上下文相关的代码也给出了链接.
-Wiki: <https://github.com/UniFreak/Algs4PhpCodeNote/wiki>
+Wiki 地址: <https://github.com/UniFreak/Algs4PhpCodeNote/wiki>
 
-项目的代码都经过我本地测试运行 (MacOS, PHP7.2) 通过. 你可以下载项目, 运行代码查看每个算法的输入和输出效果.
+项目的代码都经过我本地测试运行 (MacOS, PHP7.2) 通过. 你可以克隆项目, 在本地运行代码查看每个算法的输入和输出.
 
 # 关于代码
 
@@ -40,9 +40,9 @@ polyfill:
     run_main
 泛型, 数字索引, 定容数组  --> Arr $type 参数 -> @FixedCapacityStack.php
 
-# 学习
+# 如何学习
 
-Wiki 作为大纲. 具体到算法主要在代码注释中:
+你应该把 Wiki 作为大纲, 一遍阅读 Wiki, 一遍参阅相关代码. 你可以克隆一份项目代码到本地, 通过实际运行算法实现, 或者修改算法实现加深理解. 算法的主要思路, 主要在代码注释中.
 - @see p.
 - 讲解, 性能
 - 命题, 证明

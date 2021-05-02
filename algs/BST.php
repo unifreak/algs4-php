@@ -12,7 +12,7 @@ namespace Algs;
  *
  * 理解递归细节:
  * 将递归调用前的代码想象成 "沿着树向下走": 它将给定的键和每个结点的键比较, 根据比较结果决定向左还是向右
- * 移动到下一个结点. 将递归调用后的代码想象成 "沿着树向上爬": 对于 get(), 对应于一系列的 return 语句; 
+ * 移动到下一个结点. 将递归调用后的代码想象成 "沿着树向上爬": 对于 get(), 对应于一系列的 return 语句;
  * 对于 put(), 意味着重置搜索路径上每个父结点指向子结点的链接, 并增加每个结点中的计数器的值
  *
  * 二叉查找树的运行时间取决于树的形状 (是否平衡), 而树的形状又取决于键被插入的先后顺序
@@ -202,7 +202,7 @@ class BST
     }
 
     /**
-     * 返回给定键的排名 
+     * 返回给定键的排名
      * rank() 是 select() 的逆方法
      */
     public function rank($key): int
@@ -337,10 +337,10 @@ class BST
     }
 
     /**
-     * % more ../resource/tinyST.txt
+     * % more ../data/tinyST.txt
      * S E A R C H E X A M P L E
      *
-     * % php BST.php < ../resource/tinyST.txt
+     * % php BST.php < ../data/tinyST.txt
      * E 12
      * L 11
      * P 10

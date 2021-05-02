@@ -135,7 +135,7 @@ final class In
     }
 
     /**
-     * % php In.php ../resource/InTest.txt
+     * % php In.php ../data/InTest.txt
      */
     public static function main($args)
     {

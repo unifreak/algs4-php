@@ -55,13 +55,13 @@ class DirectedDFS
     }
 
     /**
-     * % php DirectedDFS.php ../resource/tinyDG.txt 1
+     * % php DirectedDFS.php ../data/tinyDG.txt 1
      * 1
      *
-     * % php DirectedDFS.php ../resource/tinyDG.txt 2
+     * % php DirectedDFS.php ../data/tinyDG.txt 2
      * 0 1 2 3 4 5
      *
-     * % php DirectedDFS.php ../resource/tinyDG.txt 1 2 6
+     * % php DirectedDFS.php ../data/tinyDG.txt 1 2 6
      * 0 1 2 3 4 5 6 8 9 10 11 12
      */
     public static function main(array $args): void

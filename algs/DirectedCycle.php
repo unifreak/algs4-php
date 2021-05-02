@@ -61,7 +61,7 @@ class DirectedCycle
     }
 
     /**
-     * php DirectedCycle.php ../resource/tinyDG.txt
+     * php DirectedCycle.php ../data/tinyDG.txt
      * has cycle
      */
     public static function main(array $args): void

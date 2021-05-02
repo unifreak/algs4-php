@@ -10,7 +10,7 @@ class TopM
     /**
      * 打印输入流中最大的 M 行
      *
-     * % php TopM.php 5 < ../resource/tinyBatch.txt
+     * % php TopM.php 5 < ../data/tinyBatch.txt
      * Thompson    2/27/2000  4747.08
      * vonNeumann  2/12/1994  4732.35
      * vonNeumann  1/11/1999  4409.74

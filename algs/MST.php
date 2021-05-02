@@ -24,7 +24,7 @@ class MST
     }
 
     /**
-     * php LazyPrimMST.php ../resource/tinyEWG.txt
+     * php LazyPrimMST.php ../data/tinyEWG.txt
      * 0-7 0.16
      * 1-7 0.19
      * 0-2 0.26
@@ -34,7 +34,7 @@ class MST
      * 6-2 0.40
      * 1.81
      *
-     * php LazyPrimMST.php ../resource/mediumEWG.txt
+     * php LazyPrimMST.php ../data/mediumEWG.txt
      * 0-225 0.02
      * 49-225 0.03
      * 44-49 0.02
@@ -44,7 +44,7 @@ class MST
      * 89-127 0.11
      * 10.46351
      *
-     * php PrimMST.php ../resource/tinyEWG.txt
+     * php PrimMST.php ../data/tinyEWG.txt
      * 0-7 0.16
      * 6-2 0.40
      * 5-7 0.28
@@ -54,7 +54,7 @@ class MST
      * 1-7 0.19
      * 1.81
      *
-     * php PrimMST.php ../resource/mediumEWG.txt
+     * php PrimMST.php ../data/mediumEWG.txt
      * 0-225 0.02
      * 49-225 0.03
      * 44-49 0.02
@@ -64,7 +64,7 @@ class MST
      * 89-127 0.11
      * 10.46351
      *
-     * php KruskalMST.php ../resource/tinyEWG.txt
+     * php KruskalMST.php ../data/tinyEWG.txt
      * 0-7 0.16
      * 2-3 0.17
      * 1-7 0.19
@@ -74,7 +74,7 @@ class MST
      * 6-2 0.40
      * 1.81
      *
-     * php PrimMST.php ../resource/mediumEWG.txt
+     * php PrimMST.php ../data/mediumEWG.txt
      * 0-225 0.02
      * 49-225 0.03
      * 44-49 0.02

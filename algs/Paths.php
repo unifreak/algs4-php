@@ -61,7 +61,7 @@ class Paths
      *      5 --------- 3 -/---- 4
      *
      * 使用深度优先算法寻找路径:
-     * % php DepthFirstPaths.php ../resource/tinyCG.txt 0
+     * % php DepthFirstPaths.php ../data/tinyCG.txt 0
      * 0 to 0: 0
      * 0 to 1: 0-2-1
      * 0 to 2: 0-2
@@ -70,7 +70,7 @@ class Paths
      * 0 to 5: 0-2-3-5
      *
      * 使用广度优先算法寻找最短路径:
-     * % php BreadthFirstPaths.php ../resource/tinyCG.txt 0
+     * % php BreadthFirstPaths.php ../data/tinyCG.txt 0
      * 0 to 0: 0
      * 0 to 1: 0-1
      * 0 to 2: 0-2

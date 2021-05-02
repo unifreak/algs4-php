@@ -39,21 +39,21 @@ abstract class UF
     abstract public function union($p, $q);
 
     /**
-     * % php QuickFindUF.php < ../resource/tinyUF.txt
+     * % php QuickFindUF.php < ../data/tinyUF.txt
      * 4 3
      * 3 8
      * 6 5
      * ...
      * 2 components
      *
-     * % php QuickFindUF.php < ../resource/mediumUF.txt
+     * % php QuickFindUF.php < ../data/mediumUF.txt
      * 528 503
      * 548 523
      * 389 414
      * ...
      * 3 components
      *
-     * % php WeightedQuickUnionUF.php < ../resource/largeUF.txt
+     * % php WeightedQuickUnionUF.php < ../data/largeUF.txt
      * 786321 134521
      * 696834 98245
      * 135991 549478

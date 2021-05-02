@@ -15,13 +15,13 @@ class FrequencyCounter
     /**
      * 注意: 取决于不同的 ST 实现, 打印出来的单词可能不一样
      *
-     * % php FrequencyCounter.php 1 < ../resource/tinyTale.txt
+     * % php FrequencyCounter.php 1 < ../data/tinyTale.txt
      * of 10
      *
-     * % php FrequencyCounter.php 8 < ../resource/tale.txt
+     * % php FrequencyCounter.php 8 < ../data/tale.txt
      * business 122
      *
-     * % php FrequencyCounter.php 8 < ../resource/leipzig100K.txt
+     * % php FrequencyCounter.php 8 < ../data/leipzig100K.txt
      * government 2549
      */
     public static function main(array $args): void

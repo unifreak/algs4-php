@@ -57,7 +57,7 @@ class Cycle
     }
 
     /**
-     * php Cycle.php ../resource/tinyG.txt
+     * php Cycle.php ../data/tinyG.txt
      * has cycle: 1
      */
     public static function main(array $args): void

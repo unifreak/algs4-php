@@ -62,7 +62,7 @@ abstract class Sort
     /**
      * 从标准输入读取字符串, 将他们排序并输出
      *
-     * % more ../resource/words3.txt
+     * % more ../data/words3.txt
      * bed bug dad yes zoo
      * now for tip ilk dim
      * tag jot sob nob sky
@@ -70,22 +70,22 @@ abstract class Sort
      * owl joy rap gig wee
      * was wad fee tap tar
      * dug jam all bad yet
-     * 
-     * % php SelectionSort.php ../resource/words3.txt
      *
-     * % php InsertionSort.php ../resource/words3.txt
+     * % php SelectionSort.php ../data/words3.txt
      *
-     * % php ShellSort.php ../resource/words3.txt
+     * % php InsertionSort.php ../data/words3.txt
      *
-     * % php TopDownMergeSort.php ../resource/words3.txt
+     * % php ShellSort.php ../data/words3.txt
      *
-     * % php BottomUpMergeSort.php ../resource/words3.txt
+     * % php TopDownMergeSort.php ../data/words3.txt
      *
-     * % php QuickSort.php ../resource/words3.txt
+     * % php BottomUpMergeSort.php ../data/words3.txt
      *
-     * % php ThreeWayQuickSort.php ../resource/words3.txt
+     * % php QuickSort.php ../data/words3.txt
      *
-     * % php HeapSort.php ../resource/words3.txt
+     * % php ThreeWayQuickSort.php ../data/words3.txt
+     *
+     * % php HeapSort.php ../data/words3.txt
      *
      * all bad bed bug dad dim dug egg ... sky sob tag tap tar tip wad was wee yes yet zoo
      */

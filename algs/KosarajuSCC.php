@@ -83,7 +83,7 @@ class KosarajuSCC
     }
 
     /**
-     * % php KosarajuSCC.php ../resource/tinyDG.txt
+     * % php KosarajuSCC.php ../data/tinyDG.txt
      * 5 components
      * 1
      * 5 4 3 2 0

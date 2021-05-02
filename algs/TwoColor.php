@@ -42,7 +42,7 @@ class TwoColor
     }
 
     /**
-     * % php TwoColor.php ../resource/tinyG.txt
+     * % php TwoColor.php ../data/tinyG.txt
      * NOT is bipartitie
      */
     public static function main(array $args): void

@@ -15,7 +15,7 @@ namespace Algs;
 class CPM
 {
     /**
-     * % php CPM.php < ../resource/jobsPC.txt
+     * % php CPM.php < ../data/jobsPC.txt
      * Start times:
      *    0:   0.0
      *    1:  41.0

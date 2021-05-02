@@ -92,7 +92,7 @@ class SymbolGraph
     /**
      * 用例 1: 正好是 C3.5 研究过的反向索引的功能 @see LookUpIndex
      *
-     * % php SymbolGraph.php ../resource/routes.txt " "
+     * % php SymbolGraph.php ../data/routes.txt " "
      * JFK
      *     ORD
      *     ATL
@@ -103,7 +103,7 @@ class SymbolGraph
      *
      * 用例 2: 名 Kevin Bacon 的游戏, 找到社交网路中两人之间间隔的度数
      *
-     * % php SymbolGraph.php ../resource/movies.txt "/"
+     * % php SymbolGraph.php ../data/movies.txt "/"
      * Bacon, Kevin
      *     Friday the 13th (1980)
      *     Footloose (1984)

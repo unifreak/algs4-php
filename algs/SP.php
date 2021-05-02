@@ -63,7 +63,7 @@ class SP
     }
 
     /**
-     * php DijkstraSP.php ../resource/tinyEWD.txt 0
+     * php DijkstraSP.php ../data/tinyEWD.txt 0
      * 0 to 0 (0.00):
      * 0 to 1 (1.05): 0->4 0.38    4->5 0.35    5->1 0.32
      * 0 to 2 (0.26): 0->2 0.26
@@ -73,7 +73,7 @@ class SP
      * 0 to 6 (1.51): 0->2 0.26    2->7 0.34    7->3 0.39    3->6 0.52
      * 0 to 7 (0.60): 0->2 0.26    2->7 0.34
      *
-     * % php AcyclicSP.php ../resource/tinyEWDAG.txt 5
+     * % php AcyclicSP.php ../data/tinyEWDAG.txt 5
      * 5 to 0 (0.73): 5->4 0.35    4->0 0.38
      * 5 to 1 (0.32): 5->1 0.32
      * 5 to 2 (0.62): 5->7 0.28    7->2 0.34
@@ -83,7 +83,7 @@ class SP
      * 5 to 6 (1.13): 5->1 0.32    1->3 0.29    3->6 0.52
      * 5 to 7 (0.28): 5->7 0.28
      *
-     * % php AcyclicLP.php ../resource/tinyEWDAG.txt 5
+     * % php AcyclicLP.php ../data/tinyEWDAG.txt 5
      * 5 to 0 (2.44): 5->1 0.32    1->3 0.29    3->6 0.52    6->4 0.93    4->0 0.38
      * 5 to 1 (0.32): 5->1 0.32
      * 5 to 2 (2.77): 5->1 0.32    1->3 0.29    3->6 0.52    6->4 0.93    4->7 0.37    7->2 0.34
@@ -93,7 +93,7 @@ class SP
      * 5 to 6 (1.13): 5->1 0.32    1->3 0.29    3->6 0.52
      * 5 to 7 (2.43): 5->1 0.32    1->3 0.29    3->6 0.52    6->4 0.93    4->7 0.37
      *
-     * php BellmanFordSP.php ../resource/tinyEWDn.txt 0
+     * php BellmanFordSP.php ../data/tinyEWDn.txt 0
      * 0 to 0 (0.00):
      * 0 to 1 (0.93): 0->2 0.26    2->7 0.34    7->3 0.39    3->6 0.52    6->4 -1.25
      *                4->5 0.35    5->1 0.32
@@ -106,7 +106,7 @@ class SP
      * 0 to 7 (0.60): 0->2 0.26    2->7 0.34
      *
      * @todo 用例不通过
-     * % php BellmanFordSP ../resource/tinyEWDnc.txt 0
+     * % php BellmanFordSP ../data/tinyEWDnc.txt 0
      *  4->5  0.35
      *  5->4 -0.66
      */

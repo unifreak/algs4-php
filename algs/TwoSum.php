@@ -26,7 +26,7 @@ class TwoSum
     }
 
     /**
-     * % php TwoSum.php ../resource/4Kints.txt
+     * % php TwoSum.php ../data/4Kints.txt
      * 3
      */
     public static function main(array $args): void

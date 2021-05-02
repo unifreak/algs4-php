@@ -60,7 +60,7 @@ class SeparateChainingHashST
     }
 
     /**
-     * % php SeparateChainingHashST.php < ../resource/tinyST.txt
+     * % php SeparateChainingHashST.php < ../data/tinyST.txt
      * A  8
      * C  4
      * E  12

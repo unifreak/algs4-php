@@ -109,7 +109,7 @@ class Graph
     }
 
     /**
-     * % php Graph.php ../resource/tinyG.txt
+     * % php Graph.php ../data/tinyG.txt
      * 13 vertices, 13 edges
      * 0: 6 2 1 5
      * 1: 0

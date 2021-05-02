@@ -53,7 +53,7 @@ class Topological
     }
 
     /**
-     * % php Topological.php ../resource/jobs.txt "/"
+     * % php Topological.php ../data/jobs.txt "/"
      * Calculus
      * Linear Algebra
      * Introduction to CS

@@ -92,7 +92,7 @@ class ResizingArrayStack implements \Iterator
     }
 
     /**
-     * % php ResizingArrayStack.php < ../resource/tobe.txt
+     * % php ResizingArrayStack.php < ../data/tobe.txt
      * to be not that or be (2 left on stack)
      * 1: is
      * 0: to

@@ -63,7 +63,7 @@ class EdgeWeightedCycleFinder
     }
 
     /**
-     * php EdgeWeightedCycleFinder.php ../resource/tinyDG.txt
+     * php EdgeWeightedCycleFinder.php ../data/tinyDG.txt
      * has cycle
      */
     public static function main(array $args): void

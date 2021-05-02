@@ -89,7 +89,7 @@ class SymbolDigraph
     /**
      * 这个用例正好是 C3.5 研究过的方向索引的功能 @see LookUpIndex
      *
-     * % php SymbolDigraph.php ../resource/routes.txt " "
+     * % php SymbolDigraph.php ../data/routes.txt " "
      * JFK
      *     ORD
      *     ATL
@@ -98,7 +98,7 @@ class SymbolDigraph
      *     LAS
      *     PHX
      *
-     * % php SymbolDigraph.php ../resource/movies.txt "/"
+     * % php SymbolDigraph.php ../data/movies.txt "/"
      * Tin Men (1987)
      *     Hershey, Barbara
      *     Geppi, Cindy
