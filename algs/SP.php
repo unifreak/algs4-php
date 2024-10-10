@@ -106,6 +106,7 @@ class SP
      * 0 to 7 (0.60): 0->2 0.26    2->7 0.34
      *
      * @todo 用例不通过
+     * 
      * % php BellmanFordSP ../data/tinyEWDnc.txt 0
      *  4->5  0.35
      *  5->4 -0.66

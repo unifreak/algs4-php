@@ -36,6 +36,25 @@ namespace Algs;
  * - 如果输入不是随机的 (按顺序或逆序插入), 可能导致树不平衡, 性能糟糕 --> 平衡
  *   二叉查找树.
  */
+
+// @todo Node Class Hierarchy: Node->STNOde->BSTNode?
+class BSTNode
+{
+    public $key;   // 键
+    public $val;   // 值
+    public $left;  // 指向左子树的链接
+    public $right; // 指向右子树的链接
+    public $N;     // 结点计数器: 以该结点为根的子树中的结点总数
+
+    public function __construct($key, $val, int $N)
+    {
+        $this->key = $key;
+        $this->val = $val;
+        $this->N = $N;
+    }
+}
+
+
 class BST
 {
     private $root; // 根结点
@@ -304,8 +323,11 @@ class BST
     /**
      * 删除 E (有两个子结点的结点) 的过程:
      *
-     *    找到 E 和 H         中间过程                  递归返回后, 更新链接 S.left
+     *    t: target for deletion
+     *    x: sucessor, minOf(t.right)
      *                   
+     *    找到 E 和 H         中间过程                  递归返回后, 更新链接 S.left
+     *
      *           S                                               S
      *         /  \                                            /  \
      *       E(t)  X     deleteMin(t.right)                   H(x) X
@@ -348,7 +370,7 @@ class BST
             if ($x->left === null) return $x->right;
             // 删除有两个子结点的结点: Hibbard 方法 -- 用后继结点替补被删除结点位置
             //   1. 将指向即将被删除的结点的链接保存为 t
-            $t = $x;
+            $t = $x;    // $t 临时变量是必须的, 因为最后要 return 的是 $x.
             //   2. 将 x 指向它的后继结点 min(r->right)
             $x = $this->minOf($t->right);
             //   3. 将 x 的右链接指向 deleteMinFrom(t->right).
@@ -409,22 +431,5 @@ class BST
         foreach ($st->keys($st->min(), $st->max()) as $s) {
             StdOut::println("$s {$st->get($s)}");
         }
-    }
-}
-
-// @todo Node Class Hierarchy: Node->STNOde->BSTNode?
-class BSTNode
-{
-    public $key;   // 键
-    public $val;   // 值
-    public $left;  // 指向左子树的链接
-    public $right; // 指向右子树的链接
-    public $N;     // 结点计数器: 以该结点为根的子树中的结点总数
-
-    public function __construct($key, $val, int $N)
-    {
-        $this->key = $key;
-        $this->val = $val;
-        $this->N = $N;
     }
 }

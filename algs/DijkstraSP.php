@@ -6,7 +6,7 @@ namespace Algs;
  *
  * 最短路径的 Dijkstra 算法: 支持有环, 不支持负权重值
  *
- * V.S @see Prim 算法
+ * V.S Prim 算法 (See PrimMST.php)
  * - 两种算法都会用添加边的方式构造一棵树
  *   + Prim 算法每次添加的都是离 _树_ 最近的非树顶点
  *   + Dijkstra 算法每次添加的都是离 _起点_ 最近的非树顶点
